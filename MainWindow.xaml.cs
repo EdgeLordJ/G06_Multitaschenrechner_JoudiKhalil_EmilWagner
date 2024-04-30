@@ -29,5 +29,10 @@ namespace Multitaschenrechner
         {
             CC.Content = new UserControl1();
         }
+
+        private void rbtnGraph_Checked(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new UserControl2();
+        }
     }
 }
