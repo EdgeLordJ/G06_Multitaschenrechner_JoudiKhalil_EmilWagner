@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Multitaschenrechner.View
+namespace Multitaschenrechner
 {
     /// <summary>
-    /// Interaktionslogik für Page2.xaml
+    /// Interaktionslogik für UserControl2.xaml
     /// </summary>
-    public partial class Page2 : UserControl
+    public partial class UserControl2 : UserControl
     {
-        public Page2()
+        public UserControl2()
         {
             InitializeComponent();
         }

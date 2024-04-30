@@ -4,34 +4,23 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Multitaschenrechner"
-        xmlns:Menu="clr-namespace:Multitaschenrechner.Utilities"
-        xmlns:vm="clr-namespace:Multitaschenrechner.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
-        AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
-        Background="#282828"
         >
-    <Window.DataContext>
-        <vm:Navigation/>
-    </Window.DataContext>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200px"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid HorizontalAlignment="Left" Grid.Column="0" Background="#444444">
-            <StackPanel Height="auto" Width="200">
-                <Menu:Btn>
-                    <TextBlock Text="Taschenrechner"/>
-                </Menu:Btn>
-                <Menu:Btn>
-                    <TextBlock Text="Geogebra"/>
-                </Menu:Btn>
-            </StackPanel>
-        </Grid>
+
+        <StackPanel Background="#444444" >
+            <RadioButton x:Name="rbtnCalculator" Margin="10" Content="Taschenrechner" Checked="rbtnCalculator_Checked"></RadioButton>
+            <RadioButton x:Name="rbtnGraph" Margin="10" Content="Graphen"></RadioButton>
+        </StackPanel>
+
+        <ContentControl x:Name="CC" Grid.Column="1"/>
     </Grid>
 </Window>

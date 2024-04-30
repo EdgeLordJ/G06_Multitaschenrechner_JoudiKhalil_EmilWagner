@@ -24,5 +24,10 @@ namespace Multitaschenrechner
         {
             InitializeComponent();
         }
+
+        private void rbtnCalculator_Checked(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new UserControl1();
+        }
     }
 }
