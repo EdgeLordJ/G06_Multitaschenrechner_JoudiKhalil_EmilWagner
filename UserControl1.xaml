@@ -6,7 +6,57 @@
              xmlns:local="clr-namespace:Multitaschenrechner"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Yellow">
-            
+    <Grid Background="#272B2F">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Column="4" Grid.Row="0" Grid.RowSpan="6"/>
+        <Label Grid.Row="0" Grid.ColumnSpan="4" Grid.Column="0" Content="0"
+               FontSize="50" VerticalAlignment="Center" Foreground="White"/>
+        <Button x:Name="BtnProzent" Grid.Row="1" Grid.Column="0" Content="%" FontSize="20"/>
+        <Button x:Name="BtnClear" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="C" FontSize="20"/>
+        <Button x:Name="BtnDel" Grid.Row="1" Grid.Column="3" Content="DEL" FontSize="20"/>
+        <Button x:Name="BtnOverOne" Grid.Row="2" Grid.Column="0" Content="1/x" FontSize="20"/>
+        <Button x:Name="BtnPowerTwo" Grid.Row="2" Grid.Column="1" Content="x^2" FontSize="20"/>
+        <Button x:Name="BtnSqrt" Grid.Row="2" Grid.Column="2" Content="2.Wurzel(x)" FontSize="20"/>
+        <Button x:Name="BtnDivision" Grid.Row="2" Grid.Column="3" Content="/" FontSize="20"/>
+        <Button x:Name="Btn7" Grid.Row="3" Grid.Column="0" Content="7" FontSize="20"/>
+        <Button x:Name="Btn8" Grid.Row="3" Grid.Column="1" Content="8" FontSize="20"/>
+        <Button x:Name="Btn9" Grid.Row="3" Grid.Column="2" Content="9" FontSize="20"/>
+        <Button x:Name="BtnMal" Grid.Row="3" Grid.Column="3" Content="*" FontSize="20"/>
+        <Button x:Name="Btn4" Grid.Row="4" Grid.Column="0" Content="4" FontSize="20"/>
+        <Button x:Name="Btn5" Grid.Row="4" Grid.Column="1" Content="5" FontSize="20"/>
+        <Button x:Name="Btn6" Grid.Row="4" Grid.Column="2" Content="6" FontSize="20"/>
+        <Button x:Name="BtnMinus" Grid.Row="4" Grid.Column="3" Content="-" FontSize="20"/>
+        <Button x:Name="Btn1" Grid.Row="5" Grid.Column="0" Content="1" FontSize="20"/>
+        <Button x:Name="Btn2" Grid.Row="5" Grid.Column="1" Content="2" FontSize="20"/>
+        <Button x:Name="Btn3" Grid.Row="5" Grid.Column="2" Content="3" FontSize="20"/>
+        <Button x:Name="BtnPlus" Grid.Row="5" Grid.Column="3" Content="+" FontSize="20"/>
+        <Button x:Name="BtnNegativ" Grid.Row="6" Grid.Column="0" Content="-x" FontSize="20"/>
+        <Button x:Name="Btn0" Grid.Row="6" Grid.Column="1" Content="0" FontSize="20"/>
+        <Button x:Name="BtnPoint" Grid.Row="6" Grid.Column="2" Content="." FontSize="20"/>
+        <Button x:Name="BtnEquals" Grid.Row="6" Grid.Column="3" Content="=" FontSize="20" IsDefault="True"/>
+        <Grid Grid.Row="6" Grid.Column="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnSpeichern" Grid.Column="0" Content="Speichern" FontSize="15"/>
+            <Button x:Name="BtnLaden" Grid.Column="1" Content="Laden" FontSize="15"/>
+        </Grid>
+
     </Grid>
 </UserControl>
