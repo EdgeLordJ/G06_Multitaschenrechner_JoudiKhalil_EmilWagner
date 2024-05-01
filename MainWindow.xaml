@@ -10,6 +10,7 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                
                 <ResourceDictionary Source="Style/Dictionary1.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
@@ -30,21 +31,23 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <StackPanel Grid.RowSpan="2" Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <RadioButton x:Name="rbtnCalculator" Margin="10" Checked="rbtnCalculator_Checked" Content="Taschenrechner"/>
-                <RadioButton x:Name="rbtnGraph" Margin="10" Content="Graphen" Checked="rbtnGraph_Checked"/>
+            <StackPanel Grid.RowSpan="5" Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <RadioButton x:Name="rbtnCalculator" Margin="10" Checked="rbtnCalculator_Checked">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Taschenrechner" />
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="rbtnGraph" Margin="10" Checked="rbtnGraph_Checked"/>
+                <RadioButton x:Name="rbtnSettings" Margin="10" Content="Einstellungen"/>
             </StackPanel>
 
-            <StackPanel Grid.Row="5" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <RadioButton x:Name="rbtnSettings" Margin="10" Content="Einstellungen" />
-            </StackPanel>
             
+
+
+
         </Grid>
-            
-                
-           
-        
 
         <ContentControl x:Name="CC" Grid.Column="1"/>
+
     </Grid>
 </Window>

@@ -8,7 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Images\" />
+    <None Remove="Images\img_Einstellungen.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\img_Einstellungen.png" />
   </ItemGroup>
 
 </Project>
