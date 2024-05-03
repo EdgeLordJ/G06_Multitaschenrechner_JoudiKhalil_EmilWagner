@@ -34,11 +34,24 @@
             <StackPanel Grid.RowSpan="5" Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <RadioButton x:Name="rbtnCalculator" Margin="10" Checked="rbtnCalculator_Checked">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="Taschenrechner" />
+                        <Image Source="Images/Taschenrechner_img.png" Width="18" Margin="0, 0,10 , 0"/> 
+                        <TextBlock Text="Taschenrechner" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
-                <RadioButton x:Name="rbtnGraph" Margin="10" Checked="rbtnGraph_Checked"/>
-                <RadioButton x:Name="rbtnSettings" Margin="10" Content="Einstellungen"/>
+                <RadioButton x:Name="rbtnGraph" Margin="10" Checked="rbtnGraph_Checked">
+                    <StackPanel Orientation="Horizontal">
+                        <Image />
+                        <TextBlock Text="Diagramm" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="rbtnSettings" Margin="10">
+                    <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0">
+                        <Image Source="Images/img_Einstellungen.png" Width="20" Margin="0, 0,10 , 0"></Image>
+                        <TextBlock Text="Einstellungen" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                
+               
             </StackPanel>
 
             

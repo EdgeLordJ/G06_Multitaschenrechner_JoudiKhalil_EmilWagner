@@ -1,0 +1,60 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\joudi\\source\\repos\\EdgeLordJ\\GXX_Multitaschenrechner_JoudiKhalil_EmilWagner\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BFD2179A-EBE9-4B74-ACEC-30EA2897242E}|Multitaschenrechner.csproj|c:\\users\\joudi\\source\\repos\\edgelordj\\gxx_multitaschenrechner_joudikhalil_emilwagner\\usercontrol1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFD2179A-EBE9-4B74-ACEC-30EA2897242E}|Multitaschenrechner.csproj|solutionrelative:usercontrol1.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BFD2179A-EBE9-4B74-ACEC-30EA2897242E}|Multitaschenrechner.csproj|c:\\users\\joudi\\source\\repos\\edgelordj\\gxx_multitaschenrechner_joudikhalil_emilwagner\\style\\taschenrechnerstyle.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BFD2179A-EBE9-4B74-ACEC-30EA2897242E}|Multitaschenrechner.csproj|solutionrelative:style\\taschenrechnerstyle.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TaschenrechnerStyle.xaml",
+              "DocumentMoniker": "C:\\Users\\joudi\\source\\repos\\EdgeLordJ\\GXX_Multitaschenrechner_JoudiKhalil_EmilWagner\\Style\\TaschenrechnerStyle.xaml",
+              "RelativeDocumentMoniker": "Style\\TaschenrechnerStyle.xaml",
+              "ToolTip": "C:\\Users\\joudi\\source\\repos\\EdgeLordJ\\GXX_Multitaschenrechner_JoudiKhalil_EmilWagner\\Style\\TaschenrechnerStyle.xaml",
+              "RelativeToolTip": "Style\\TaschenrechnerStyle.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-01T15:34:06.382Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserControl1.xaml",
+              "DocumentMoniker": "C:\\Users\\joudi\\source\\repos\\EdgeLordJ\\GXX_Multitaschenrechner_JoudiKhalil_EmilWagner\\UserControl1.xaml",
+              "RelativeDocumentMoniker": "UserControl1.xaml",
+              "ToolTip": "C:\\Users\\joudi\\source\\repos\\EdgeLordJ\\GXX_Multitaschenrechner_JoudiKhalil_EmilWagner\\UserControl1.xaml",
+              "RelativeToolTip": "UserControl1.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-01T14:58:04.8Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
