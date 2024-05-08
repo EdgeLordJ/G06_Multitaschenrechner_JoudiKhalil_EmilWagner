@@ -27,4 +27,18 @@
 Emil: Fokus: Front End (Menüleiste) und Geogebra Fake
 Joudi: Fokus: Back End (der normale Taschenrechner) und auch Front End ein bisschen
 
+# Code Dokumentation
 
+## Joudi
+| Tag   | Thema                                                                                |
+| ----- | ------------------------------------------------------------------------------------ |
+| 24.4. | PLanung                                                                              |
+| 1.5.  | Normaler Taschenrechner Design gemacht                                               |
+| 8.5.  | Normaler Taschenrechner hälfte fertig, Paket "ncalc" installiert; an Doku gearbeitet |
+|       |                                                                                      |
+
+## Emil
+| Tag   | Thema   |
+| ----- | ------- |
+| 24.4. | PLanung |
+|       |         |
