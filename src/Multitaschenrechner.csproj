@@ -20,10 +20,13 @@
     <Content Include="Images\Taschenrechner_img.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+<<<<<<< HEAD
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="ncalc" Version="1.3.8" />
+=======
+>>>>>>> e498d566e2f86424e8f2a01b49b0e7a3fdd1cf5c
   </ItemGroup>
 
 </Project>

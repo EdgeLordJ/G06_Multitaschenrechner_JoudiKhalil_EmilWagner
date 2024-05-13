@@ -6,7 +6,72 @@
              xmlns:local="clr-namespace:Multitaschenrechner"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="Green">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/TaschenrechnerStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2.5*"/>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="1" Background="#1C1F21">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="300" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Button x:Name="Btne" Content="e" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnC" Grid.Column="1" Grid.ColumnSpan="2" Content="c" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnDel" Grid.Column="3" Content="Del" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnX" Grid.Row="1" Grid.Column="0" Content="x" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnY" Grid.Row="1" Grid.Column="1" Content="y" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnEqual" Grid.Row="1" Grid.Column="2" Content="=" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnPow2" Grid.Row="1" Grid.Column="3" Content="x^2" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnRoot2" Grid.Row="2" Grid.Column="0" Content="2.Wurzel(x)" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnBracketL" Grid.Row="2" Grid.Column="1" Content="(" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnBracketR" Grid.Row="2" Grid.Column="2" Content=")" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnPowY" Grid.Row="2" Grid.Column="3" Content="x^y" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn7" Grid.Row="3" Grid.Column="0" Content="7" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn8" Grid.Row="3" Grid.Column="1" Content="8" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn9" Grid.Row="3" Grid.Column="2" Content="9" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnTimes" Grid.Row="3" Grid.Column="3" Content="x" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn4" Grid.Row="3" Grid.Column="0" Content="4" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn5" Grid.Row="3" Grid.Column="1" Content="5" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn6" Grid.Row="3" Grid.Column="2" Content="6" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnMinus" Grid.Row="3" Grid.Column="3" Content="-" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn1" Grid.Row="4" Grid.Column="0" Content="1" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn2" Grid.Row="4" Grid.Column="1" Content="2" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn3" Grid.Row="4" Grid.Column="2" Content="3" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnPlus" Grid.Row="4" Grid.Column="3" Content="+" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnTurning" Grid.Row="5" Grid.Column="0" Content="(-)" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn0" Grid.Row="5" Grid.Column="1" Content="0" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnDot" Grid.Row="5" Grid.Column="2" Content="." Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnEnter" Grid.Row="5" Grid.Column="3" Content="Enter" Style="{StaticResource Equalstyle}"/>
+            </Grid>
+        </Grid>
             
     </Grid>
 </UserControl>
