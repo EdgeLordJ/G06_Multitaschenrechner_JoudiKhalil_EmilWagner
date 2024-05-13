@@ -20,7 +20,7 @@ namespace Multitaschenrechner
 
         public NormalCalc()
         {
-
+            
         }
 
         public void AddString(string entry, Label lblOutput)
