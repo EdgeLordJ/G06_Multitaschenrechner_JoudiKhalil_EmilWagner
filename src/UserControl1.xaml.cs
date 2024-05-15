@@ -112,11 +112,6 @@ namespace Multitaschenrechner
             lblOutput.Content = result;
         }
 
-        private void BtnBrackets_Click(object sender, RoutedEventArgs e)
-        {
-            calc.AddString("()", lblOutput);
-        }
-
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
             calc.Clear(lblOutput);
@@ -125,6 +120,31 @@ namespace Multitaschenrechner
         private void BtnPoint_Click(object sender, RoutedEventArgs e)
         {
             calc.AddString(".", lblOutput);
+        }
+
+        private void BtnPowerTwo_Click(object sender, RoutedEventArgs e)
+        {
+            calc.Squared(lblOutput);
+        }
+
+        private void BtnOverOne_Click(object sender, RoutedEventArgs e)
+        {
+            calc.OneDividedBy(lblOutput);
+        }
+
+        private void BtnSqrt_Click(object sender, RoutedEventArgs e)
+        {
+            calc.Sqrt(lblOutput);
+        }
+
+        private void BtnBracketOpen_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString("(", lblOutput);
+        }
+
+        private void BtnBracketClose_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString(")", lblOutput);
         }
     }
 }

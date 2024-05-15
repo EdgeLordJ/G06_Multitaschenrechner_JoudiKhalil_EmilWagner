@@ -14,13 +14,43 @@ namespace Multitaschenrechner
 
         public string LastEntry { get; set; } = "+";
 
-        public string LastBracket { get; set; } = " ";
-
         public bool Dot { get; set; } = false;
+
+        public string LastNums { get; set; } = "";
 
         public NormalCalc()
         {
             
+        }
+
+        public void Squared(Label lblOutput)
+        {
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
+            {
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
+                lblOutput.Content += $"{nums * nums}";
+                LastNums = "";
+            }
+        }
+
+        public void OneDividedBy(Label lblOutput)
+        {
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
+            {
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
+                lblOutput.Content += $"{1 / nums}";
+                LastNums = "";
+            }
+        }
+
+        public void Sqrt(Label lblOutput)
+        {
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
+            {
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
+                lblOutput.Content += $"{Math.Sqrt(nums)}";
+                LastNums = "";
+            }
         }
 
         public void AddString(string entry, Label lblOutput)
@@ -33,21 +63,20 @@ namespace Multitaschenrechner
                     lblOutput.Content += ".";
                 }
             }
-            else if (entry == "()")
+            else if (entry == "(" || entry == ")")
             {
-                if (LastBracket == " ")
+                if (entry == "(")
                 {
                     lblOutput.Content += "(";
-                    LastBracket = "(";
                 }
-                else if (LastBracket == "(")
+                else if (entry == ")")
                 {
                     lblOutput.Content += ")";
-                    LastBracket = " ";
                 }
             }
             else if (LastEntry != "+" && LastEntry != "-" && LastEntry != "*" && LastEntry != "/")
             {
+                LastNums += entry;
                 if (lblOutput.Content.ToString() == "0")
                 {
                     lblOutput.Content = entry;
@@ -61,10 +90,12 @@ namespace Multitaschenrechner
             }
             else
             {
+                LastNums = "";
                 Dot = false;
                 LastEntry = entry;
                 if (LastEntry != "+" && LastEntry != "-" && LastEntry != "*" && LastEntry != "/")
                 {
+                    LastNums += entry;
                     if (lblOutput.Content.ToString() == "0")
                     {
                         lblOutput.Content = entry;
@@ -87,14 +118,10 @@ namespace Multitaschenrechner
                 if (lblOutput.Content.ToString() != "")
                 {
                     LastEntry = lblOutput.Content.ToString().Last().ToString();
-                    if (lblOutput.Content.ToString().IndexOf("(") == -1)
-                    {
-                        LastBracket = "("; // Crazy Feature (Klammern in Klammern jetzt möglich)
-                    }
                 }
                 else
                 {
-                    LastEntry = "0";
+                    LastEntry = "+";
                 }
             }
         }
@@ -102,14 +129,14 @@ namespace Multitaschenrechner
         public void Clear(Label lblOutput)
         {
             lblOutput.Content = "0";
-            LastEntry = "0";
+            LastEntry = "+";
             LastBracket = " ";
             Dot = false;
         }
 
         public double Berechnen(string rechnung)
         {
-            rechnung = rechnung.Replace("^", "");
+            rechnung = rechnung.Replace("Pow(x)", "Pow(x, 2)");
             NCalc.Expression expr = new NCalc.Expression(rechnung);
             return (Convert.ToDouble(expr.Evaluate())); // Fehler bei 2 mal "=" drücken wenn z.B. 3.2 drin steht
         }

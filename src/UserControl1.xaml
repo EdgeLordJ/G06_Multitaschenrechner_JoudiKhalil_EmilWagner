@@ -41,11 +41,18 @@
                FontSize="50" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Right" Margin="0, 0, 10, 0" />
         <Button x:Name="BtnProzent" Grid.Row="1" Grid.Column="0" Content="%" Style="{StaticResource NumberStyle}"/>
         <Button x:Name="BtnClear" Grid.Row="1" Grid.Column="1" Content="C" Style="{StaticResource NumberStyle}" Click="BtnClear_Click"/>
-        <Button x:Name="BtnBrackets" Grid.Row="1" Grid.Column="2" Content="( )" Style="{StaticResource NumberStyle}" Click="BtnBrackets_Click"/>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="BtnBracketOpen" Grid.Row="0" Grid.Column="0" Content="(" Style="{StaticResource NumberStyle}" Click="BtnBracketOpen_Click"/>
+            <Button x:Name="BtnBracketClose" Grid.Row="1" Grid.Column="2"  Content=")" Style="{StaticResource NumberStyle}" Click="BtnBracketClose_Click"/>
+        </Grid>
         <Button x:Name="BtnDel" Grid.Row="1" Grid.Column="3" Content="DEL" Style="{StaticResource NumberStyle}" Click="BtnDel_Click"/>
-        <Button x:Name="BtnOverOne" Grid.Row="2" Grid.Column="0" Content="1/x" Style="{StaticResource NumberStyle}"/>
-        <Button x:Name="BtnPowerTwo" Grid.Row="2" Grid.Column="1" Content="x^2" Style="{StaticResource NumberStyle}"/>
-        <Button x:Name="BtnSqrt" Grid.Row="2" Grid.Column="2" Content="2.Wurzel(x)" Style="{StaticResource NumberStyle}"/>
+        <Button x:Name="BtnOverOne" Grid.Row="2" Grid.Column="0" Content="1/x" Style="{StaticResource NumberStyle}" Click="BtnOverOne_Click"/>
+        <Button x:Name="BtnPowerTwo" Grid.Row="2" Grid.Column="1" Content="x^2" Style="{StaticResource NumberStyle}" Click="BtnPowerTwo_Click"/>
+        <Button x:Name="BtnSqrt" Grid.Row="2" Grid.Column="2" Content="2.Wurzel(x)" Style="{StaticResource NumberStyle}" Click="BtnSqrt_Click"/>
         <Button x:Name="BtnDivision" Grid.Row="2" Grid.Column="3" Content="/" Style="{StaticResource NumberStyle}" Click="BtnDivision_Click"/>
         <Button x:Name="Btn7" Grid.Row="3" Grid.Column="0" Content="7" Style="{StaticResource NumberStyle}" Click="Btn7_Click"/>
         <Button x:Name="Btn8" Grid.Row="3" Grid.Column="1" Content="8" Style="{StaticResource NumberStyle}" Click="Btn8_Click"/>
