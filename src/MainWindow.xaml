@@ -29,12 +29,12 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
-                <RowDefinition />
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.RowSpan="5" Grid.Row="1" Background="Transparent" HorizontalAlignment="Center" VerticalAlignment="Top">
                 <RadioButton x:Name="rbtnCalculator" Margin="10" GroupName="GroupMenu" Checked="rbtnCalculator_Checked">
                     <StackPanel Orientation="Horizontal">
-                        <Image Source="Images/Taschenrechner_img.png" Width="18" Margin="0, 0,10 , 0"/> 
+                        <Image Source="Images/Taschenrechner_img.png" Width="20" Margin="0, 0,10 , 0"/> 
                         <TextBlock Text="Taschenrechner" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
@@ -51,10 +51,12 @@
 
             <RadioButton x:Name="rbtnSettings" Margin="10" Grid.Row="5" GroupName="GroupMenu">
                 <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0">
-                    <Image Source="Images/img_Einstellungen.png" Width="20" Margin="0, 0,10 , 0"></Image>
+                    <Image Source="Images/img_Einstellungen.png" Width="25" Margin="0, 0,10 , 0"></Image>
                     <TextBlock Text="Einstellungen" VerticalAlignment="Center"/>
                 </StackPanel>
             </RadioButton>
+
+            
         </Grid>
 
         <ContentControl x:Name="CC" Grid.Column="1"/>

@@ -26,7 +26,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="300" />
             </Grid.RowDefinitions>
-
+            <ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"></ScrollViewer>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -42,6 +42,8 @@
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    
                 </Grid.RowDefinitions>
                 <Button x:Name="Btne" Content="e" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="BtnC" Grid.Column="1" Grid.ColumnSpan="2" Content="c" Style="{StaticResource NumberStyle}"/>
@@ -58,20 +60,31 @@
                 <Button x:Name="Btn8" Grid.Row="3" Grid.Column="1" Content="8" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="Btn9" Grid.Row="3" Grid.Column="2" Content="9" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="BtnTimes" Grid.Row="3" Grid.Column="3" Content="x" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="Btn4" Grid.Row="3" Grid.Column="0" Content="4" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="Btn5" Grid.Row="3" Grid.Column="1" Content="5" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="Btn6" Grid.Row="3" Grid.Column="2" Content="6" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnMinus" Grid.Row="3" Grid.Column="3" Content="-" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="Btn1" Grid.Row="4" Grid.Column="0" Content="1" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="Btn2" Grid.Row="4" Grid.Column="1" Content="2" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="Btn3" Grid.Row="4" Grid.Column="2" Content="3" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnPlus" Grid.Row="4" Grid.Column="3" Content="+" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnTurning" Grid.Row="5" Grid.Column="0" Content="(-)" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="Btn0" Grid.Row="5" Grid.Column="1" Content="0" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnDot" Grid.Row="5" Grid.Column="2" Content="." Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnEnter" Grid.Row="5" Grid.Column="3" Content="Enter" Style="{StaticResource Equalstyle}"/>
+                <Button x:Name="Btn4" Grid.Row="4" Grid.Column="0" Content="4" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn5" Grid.Row="4" Grid.Column="1" Content="5" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn6" Grid.Row="4" Grid.Column="2" Content="6" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnMinus" Grid.Row="4" Grid.Column="3" Content="-" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn1" Grid.Row="5" Grid.Column="0" Content="1" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn2" Grid.Row="5" Grid.Column="1" Content="2" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn3" Grid.Row="5" Grid.Column="2" Content="3" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnPlus" Grid.Row="5" Grid.Column="3" Content="+" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnTurning" Grid.Row="6" Grid.Column="0" Content="(-)" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="Btn0" Grid.Row="6" Grid.Column="1" Content="0" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnDot" Grid.Row="6" Grid.Column="2" Content="." Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnEnter" Grid.Row="6" Grid.Column="3" Content="Enter" Style="{StaticResource Equalstyle}"/>
             </Grid>
         </Grid>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button x:Name="btnZoomIn" Width="50" Height="30" Content="+"  Margin="20" Click="ZoomIn_Click"/>
+            <Button x:Name="btnZoomOut" Width="50" Height="30" Content="-"  Margin="20" Click="ZoomOut_Click"/>
+        </StackPanel>
+
+
+        <Canvas x:Name="CanvasCoordinateSystem"  
+                SizeChanged="KoordinatenCanvas_SizeChanged" >
+
+
+        </Canvas>
             
     </Grid>
 </UserControl>

@@ -9,12 +9,16 @@
 
   <ItemGroup>
     <None Remove="Images\img_Einstellungen.png" />
+    <None Remove="Images\sidebar.svg" />
     <None Remove="Images\Taschenrechner.png" />
     <None Remove="Images\Taschenrechner_img.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="Images\img_Einstellungen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\sidebar.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Taschenrechner_img.png">
