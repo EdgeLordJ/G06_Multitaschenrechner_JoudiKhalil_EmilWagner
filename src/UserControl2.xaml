@@ -74,14 +74,15 @@
                 <Button x:Name="BtnEnter" Grid.Row="6" Grid.Column="3" Content="Enter" Style="{StaticResource Equalstyle}"/>
             </Grid>
         </Grid>
-        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Button x:Name="btnZoomIn" Width="50" Height="30" Content="+"  Margin="20" Click="ZoomIn_Click"/>
-            <Button x:Name="btnZoomOut" Width="50" Height="30" Content="-"  Margin="20" Click="ZoomOut_Click"/>
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1">
+            <Button x:Name="btnZoomIn" Width="50" Height="30" Content="+"  Margin="0 0 0 10" Click="ZoomIn_Click" Style="{StaticResource NumberStyle}" />
+            <Button x:Name="btnZoomOut" Width="50" Height="30" Content="-"  Margin="20 0 20 10" Click="ZoomOut_Click" Style="{StaticResource NumberStyle}" />
         </StackPanel>
 
 
         <Canvas x:Name="CanvasCoordinateSystem"  
-                SizeChanged="KoordinatenCanvas_SizeChanged" >
+                SizeChanged="KoordinatenCanvas_SizeChanged" 
+                >
 
 
         </Canvas>

@@ -29,6 +29,5 @@ namespace Multitaschenrechner
             this._coordinateSystem.ZoomOut(CanvasCoordinateSystem);
         }
 
-       
     }
 }
