@@ -130,7 +130,6 @@ namespace Multitaschenrechner
         {
             lblOutput.Content = "0";
             LastEntry = "+";
-            LastBracket = " ";
             Dot = false;
         }
 
