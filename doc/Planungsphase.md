@@ -35,7 +35,7 @@ Joudi: Fokus: Back End (der normale Taschenrechner) und auch Front End ein bissc
 | 24.4. | PLanung                                                                              |
 | 1.5.  | Normaler Taschenrechner Design gemacht                                               |
 | 8.5.  | Normaler Taschenrechner hälfte fertig, Paket "ncalc" installiert; an Doku gearbeitet |
-|       |                                                                                      |
+| 15.05 | Prozent, negieren, Hoch 2, Wurzel, 1 Durch x fertig; Komma fertig angepasst; Klammern Funktionalität geändert |
 
 ## Emil
 | Tag   | Thema   |
