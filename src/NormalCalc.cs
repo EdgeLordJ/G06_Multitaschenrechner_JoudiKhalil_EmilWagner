@@ -12,6 +12,8 @@ namespace Multitaschenrechner
     {
         public string Rechnung { get; set; } // Für Verlauf/Speicher
 
+        
+
         public string LastEntry { get; set; } = "+";
 
         public bool Dot { get; set; } = false;
@@ -29,7 +31,7 @@ namespace Multitaschenrechner
             {
                 lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
                 lblOutput.Content += $"{nums * nums}";
-                LastNums = "";
+                LastNums = $"{nums * nums}";
             }
         }
 
@@ -39,17 +41,27 @@ namespace Multitaschenrechner
             {
                 lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
                 lblOutput.Content += $"{1 / nums}";
-                LastNums = "";
+                LastNums = $"{1 / nums}";
             }
         }
 
-        public void Sqrt(Label lblOutput)
+        public void Negate(Label lblOutput)
         {
             if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
             {
                 lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
-                lblOutput.Content += $"{Math.Sqrt(nums)}";
-                LastNums = "";
+                lblOutput.Content += $"{-nums}";
+                LastNums = $"{-nums}";
+            }
+        }
+
+        public void Percent(Label lblOutput)
+        {
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
+            {
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
+                lblOutput.Content += $"{nums / 100}";
+                LastNums = $"{nums / 100}";
             }
         }
 
@@ -65,7 +77,11 @@ namespace Multitaschenrechner
             }
             else if (entry == "(" || entry == ")")
             {
-                if (entry == "(")
+                if (lblOutput.Content.ToString() == "0")
+                {
+                    lblOutput.Content = entry;
+                }
+                else if (entry == "(")
                 {
                     lblOutput.Content += "(";
                 }
@@ -110,14 +126,26 @@ namespace Multitaschenrechner
             }
         }
 
-        public void RemoveString(Label lblOutput) // "." richtig anpassen
+        public void RemoveString(Label lblOutput)
         {
-            if (lblOutput.Content.ToString().Length > 0)
+            string CurrentEntry = lblOutput.Content.ToString();
+            if (CurrentEntry.Length > 0)
             {
-                lblOutput.Content = lblOutput.Content.ToString().Remove(lblOutput.Content.ToString().Length - 1);
-                if (lblOutput.Content.ToString() != "")
+                lblOutput.Content = CurrentEntry.Remove(CurrentEntry.Length - 1);
+                if (CurrentEntry != "")
                 {
-                    LastEntry = lblOutput.Content.ToString().Last().ToString();
+                    LastEntry = CurrentEntry.Last().ToString();
+                    if (Dot == true)
+                    {
+                        for (int i = CurrentEntry.Length - 1; i >= 0; i--)
+                        {
+                            if ((CurrentEntry[i] == '+' || CurrentEntry[i] == '-' || CurrentEntry[i] == '*' || CurrentEntry[i] == '/') && CurrentEntry.Last().ToString() == ".")
+                            {
+                                Dot = false;
+                                break;
+                            }
+                        }
+                    }
                 }
                 else
                 {
@@ -135,7 +163,6 @@ namespace Multitaschenrechner
 
         public double Berechnen(string rechnung)
         {
-            rechnung = rechnung.Replace("Pow(x)", "Pow(x, 2)");
             NCalc.Expression expr = new NCalc.Expression(rechnung);
             return (Convert.ToDouble(expr.Evaluate())); // Fehler bei 2 mal "=" drücken wenn z.B. 3.2 drin steht
         }

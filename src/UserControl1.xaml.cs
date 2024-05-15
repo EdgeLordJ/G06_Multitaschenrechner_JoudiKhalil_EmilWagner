@@ -134,7 +134,7 @@ namespace Multitaschenrechner
 
         private void BtnSqrt_Click(object sender, RoutedEventArgs e)
         {
-            calc.Sqrt(lblOutput);
+            calc.AddString("Sqrt(", lblOutput);
         }
 
         private void BtnBracketOpen_Click(object sender, RoutedEventArgs e)
@@ -145,6 +145,16 @@ namespace Multitaschenrechner
         private void BtnBracketClose_Click(object sender, RoutedEventArgs e)
         {
             calc.AddString(")", lblOutput);
+        }
+
+        private void BtnNegativ_Click(object sender, RoutedEventArgs e)
+        {
+            calc.Negate(lblOutput);
+        }
+
+        private void BtnProzent_Click(object sender, RoutedEventArgs e)
+        {
+            calc.Percent(lblOutput);
         }
     }
 }
