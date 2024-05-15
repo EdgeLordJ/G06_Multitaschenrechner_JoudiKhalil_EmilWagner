@@ -92,7 +92,7 @@ namespace Multitaschenrechner
                         Content = (countX).ToString(), // Zahlenbeschriftung für jede 10. Zeile
                         Foreground = Brushes.Black
                     };
-                    Canvas.SetLeft(xGridLabel, i - 7); // Positionierung der Beschriftung
+                    Canvas.SetLeft(xGridLabel, i - 5); // Positionierung der Beschriftung
                     Canvas.SetTop(xGridLabel, centerY + 5); // Positionierung der Beschriftung
                     canvas.Children.Add(xGridLabel);
                 }
@@ -118,7 +118,7 @@ namespace Multitaschenrechner
                         Content = (countX ).ToString(), // Zahlenbeschriftung für jede 10. Zeile
                         Foreground = Brushes.Black
                     };
-                    Canvas.SetLeft(xGridLabel, i - 7); // Positionierung der Beschriftung
+                    Canvas.SetLeft(xGridLabel, i - 5); // Positionierung der Beschriftung
                     Canvas.SetTop(xGridLabel, centerY + 5); // Positionierung der Beschriftung
                     canvas.Children.Add(xGridLabel);
                 }
