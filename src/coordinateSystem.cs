@@ -2,6 +2,8 @@
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.Windows;
+using System.Linq;
 
 namespace Multitaschenrechner
 {
@@ -70,11 +72,8 @@ namespace Multitaschenrechner
             canvas.Children.Add(yLabel);
 
             // Gitternetzlinien und Skalierung
-            for (int i = (int)centerX; i < coordinateWidth; i += this._scale)
+            for (int i = (int)centerX, countX = 0; i < coordinateWidth; i += this._scale, countX++)
             {
-                if (this._scale <= 10 && (i - centerX) % (this._scale * 5) != 0) // Zeige nur jede 10. Spalte
-                    continue;
-
                 Line gridLine = new Line
                 {
                     X1 = i,
@@ -85,13 +84,22 @@ namespace Multitaschenrechner
                     StrokeThickness = 0.5
                 };
                 canvas.Children.Add(gridLine);
+
+                if (countX % 10 == 0) // Jede 10. Zeile auf der X-Achse beschriften
+                {
+                    Label xGridLabel = new Label
+                    {
+                        Content = (countX).ToString(), // Zahlenbeschriftung für jede 10. Zeile
+                        Foreground = Brushes.Black
+                    };
+                    Canvas.SetLeft(xGridLabel, i - 7); // Positionierung der Beschriftung
+                    Canvas.SetTop(xGridLabel, centerY + 5); // Positionierung der Beschriftung
+                    canvas.Children.Add(xGridLabel);
+                }
             }
 
-            for (int i = (int)centerX; i > 0; i -= this._scale)
+            for (int i = (int)centerX, countX = 0; i > 0; i -= this._scale, countX++)
             {
-                if (this._scale <= 10 && (centerX - i) % (this._scale * 5) != 0) // Zeige nur jede 10. Spalte
-                    continue;
-
                 Line gridLine = new Line
                 {
                     X1 = i,
@@ -102,13 +110,22 @@ namespace Multitaschenrechner
                     StrokeThickness = 0.5
                 };
                 canvas.Children.Add(gridLine);
+
+                if (countX % 10 == 0) // Jede 10. Zeile auf der X-Achse beschriften
+                {
+                    Label xGridLabel = new Label
+                    {
+                        Content = (countX ).ToString(), // Zahlenbeschriftung für jede 10. Zeile
+                        Foreground = Brushes.Black
+                    };
+                    Canvas.SetLeft(xGridLabel, i - 7); // Positionierung der Beschriftung
+                    Canvas.SetTop(xGridLabel, centerY + 5); // Positionierung der Beschriftung
+                    canvas.Children.Add(xGridLabel);
+                }
             }
 
-            for (int i = (int)centerY; i < coordinateHeight; i += this._scale)
+            for (int i = (int)centerY, countY = 0; i < coordinateHeight; i += this._scale, countY++)
             {
-                if (this._scale <= 10 && (i - centerY) % (this._scale * 5) != 0) // Zeige nur jede 10. Reihe
-                    continue;
-
                 Line gridLine = new Line
                 {
                     X1 = 0,
@@ -119,13 +136,22 @@ namespace Multitaschenrechner
                     StrokeThickness = 0.5
                 };
                 canvas.Children.Add(gridLine);
+
+                if (countY % 10 == 0) // Jede 10. Zeile auf der Y-Achse beschriften
+                {
+                    Label yGridLabel = new Label
+                    {
+                        Content = (countY).ToString(), // Zahlenbeschriftung für jede 10. Zeile
+                        Foreground = Brushes.Black
+                    };
+                    Canvas.SetLeft(yGridLabel, centerX - 20); // Positionierung der Beschriftung
+                    Canvas.SetTop(yGridLabel, i - 12); // Positionierung der Beschriftung
+                    canvas.Children.Add(yGridLabel);
+                }
             }
 
-            for (int i = (int)centerY; i > 0; i -= this._scale)
+            for (int i = (int)centerY, countY = 0; i > 0; i -= this._scale, countY++)
             {
-                if (this._scale <= 10 && (centerY - i) % (this._scale * 5) != 0) // Zeige nur jede 10. Reihe
-                    continue;
-
                 Line gridLine = new Line
                 {
                     X1 = 0,
@@ -136,8 +162,22 @@ namespace Multitaschenrechner
                     StrokeThickness = 0.5
                 };
                 canvas.Children.Add(gridLine);
+
+                if (countY % 10 == 0) // Jede 10. Zeile auf der Y-Achse beschriften
+                {
+                    Label yGridLabel = new Label
+                    {
+                        Content = (countY ).ToString(), // Zahlenbeschriftung für jede 10. Zeile
+                        Foreground = Brushes.Black
+                    };
+                    Canvas.SetLeft(yGridLabel, centerX - 20); // Positionierung der Beschriftung
+                    Canvas.SetTop(yGridLabel, i - 12); // Positionierung der Beschriftung
+                    canvas.Children.Add(yGridLabel);
+                }
             }
         }
+
+        
 
         public void ZoomIn(Canvas canvas)
         {

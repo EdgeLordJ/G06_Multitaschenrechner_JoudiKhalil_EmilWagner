@@ -71,7 +71,7 @@
                 <Button x:Name="BtnTurning" Grid.Row="6" Grid.Column="0" Content="(-)" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="Btn0" Grid.Row="6" Grid.Column="1" Content="0" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="BtnDot" Grid.Row="6" Grid.Column="2" Content="." Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnEnter" Grid.Row="6" Grid.Column="3" Content="Enter" Style="{StaticResource Equalstyle}"/>
+                <Button x:Name="BtnEnter" Grid.Row="6" Grid.Column="3" Content="Enter" Style="{StaticResource Equalstyle}" Click="BtnEnter_Click"/>
             </Grid>
         </Grid>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1">
