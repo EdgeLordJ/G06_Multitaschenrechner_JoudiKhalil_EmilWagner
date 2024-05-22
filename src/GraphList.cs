@@ -14,6 +14,9 @@ namespace Multitaschenrechner
 
         private Brush[] _brushesArray = new Brush[] { Brushes.Blue, Brushes.Green, Brushes.Red, Brushes.AliceBlue, Brushes.Gray, Brushes.Pink, Brushes.Yellow, Brushes.Orange, Brushes.DarkBlue, Brushes.Cyan };
 
+        private List<Brush> _usedBrushes = new List<Brush>();
+
+        private int _rounds;
         public GraphList() 
         { 
         
@@ -21,14 +24,47 @@ namespace Multitaschenrechner
 
         public void Add(Graph graph)
         {
-            this._grapheneList.Add(graph);
+
+            if (this._grapheneList.Count < 10)
+            {
+                if (graph.Color == null)
+                {
+                    Brush newColor = this._brushesArray[this._rounds];
+
+
+                    graph.Color = newColor;
+                    this._usedBrushes.Add(graph.Color);
+                    this._rounds++;
+
+                }
+                this._grapheneList.Add(graph);
+                this._usedBrushes.Add(graph.Color);
+
+            }
+        }
+
+        public void DrawLabelButton(Grid grid)
+        {
+            for (int i = 0; i < this._grapheneList.Count; i++)
+            {
+                this._grapheneList[i].DrawButtonLabel(grid, i);
+            }
         }
 
         public void DrawGraphene(Canvas canvas)
         {
+            
             for (int i = 0; i < this._grapheneList.Count; i++)
             {
-                this._grapheneList[i].DrawGraph(canvas);
+                if (this._grapheneList[i].Content == "")
+                {
+
+                }
+                else
+                {
+                    this._grapheneList[i].DrawGraph(canvas);
+                }
+                
             }
         }
 
