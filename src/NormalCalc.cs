@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Xml.Linq;
 
@@ -15,6 +16,7 @@ namespace Multitaschenrechner
         private bool dot = false;
         private string lastNums = "";
 
+        public string LastEntry { get { return lastEntry; } set { lastEntry = value; } }
         public string Rechnung { get; set; }
         public string Ergebnis { get; set; }
 
@@ -193,12 +195,19 @@ namespace Multitaschenrechner
             }
         }
 
-        public double Berechnen(string rechnung)
+        public string Berechnen(string rechnung)
         {
             rechnung = rechnung.Replace(",", ".");
             rechnung = rechnung.Replace("√", "Sqrt");
             NCalc.Expression expr = new NCalc.Expression(rechnung);
-            return (Convert.ToDouble(expr.Evaluate())); // Fehler bei 2 mal "=" drücken wenn z.B. 3.2 drin steht
+            try
+            {
+                return expr.Evaluate().ToString(); // Fehler bei 2 mal "=" drücken wenn z.B. 3.2 drin steht
+            }
+            catch (Exception e)
+            {
+                return "undefined";
+            }
         }
     }
 }

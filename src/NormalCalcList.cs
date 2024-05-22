@@ -16,7 +16,10 @@ namespace Multitaschenrechner
 
         public void Add(NormalCalc calc)
         {
-            calcs.Add(calc);
+            if (calc.Rechnung != "0")
+            {
+                calcs.Add(calc);
+            }
         }
 
         public void UpdateListBox(ListBox listBox, Label lbl)
@@ -72,11 +75,10 @@ namespace Multitaschenrechner
             }
         }
 
-
-        public void SetLastCalc(string calc, Label lbl)
+        public void SetLastCalc(string str, Label lbl, NormalCalc calc)
         {
-            lbl.Content = calc;
+            calc.LastEntry = str.Last().ToString();
+            lbl.Content = str;
         }
-
     }
 }

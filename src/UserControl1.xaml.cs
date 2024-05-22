@@ -110,9 +110,9 @@ namespace Multitaschenrechner
 
         private void BtnEquals_Click(object sender, RoutedEventArgs e)
         {
-            double result = calc.Berechnen(lblOutput.Content.ToString());
+            string result = calc.Berechnen(lblOutput.Content.ToString());
             calc.Rechnung = lblOutput.Content.ToString();
-            calc.Ergebnis = result.ToString();
+            calc.Ergebnis = result;
             calcList.Add(calc);
             calc = new NormalCalc();
             calcList.UpdateListBox(ListBoxOutput, lblOutput);
@@ -169,7 +169,7 @@ namespace Multitaschenrechner
             if (ListBoxOutput.SelectedItem != null)
             {
                 string[] parts = ListBoxOutput.SelectedItem.ToString().Split(" =");
-                calcList.SetLastCalc(parts[0].ToString(), lblOutput);
+                calcList.SetLastCalc(parts[0].ToString(), lblOutput, calc);
             }
         }
 
