@@ -36,7 +36,7 @@
 
         <Border Grid.Row="0"  Grid.ColumnSpan="4" BorderBrush="White" BorderThickness="1" CornerRadius="2" Margin="3"/>
 
-        <ListBox Grid.Column="4" Grid.Row="0" Grid.RowSpan="6" Background="#1C1F21"/>
+        <ListBox x:Name="ListBoxOutput" Grid.Column="4" Grid.Row="0" Grid.RowSpan="6" FontSize="18" Foreground="White" Background="#1C1F21" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden" SelectionChanged="ListBoxOutput_SelectionChanged"/>
         <Label x:Name="lblOutput" Grid.Row="0" Grid.ColumnSpan="4" Grid.Column="0" Content="0"
                FontSize="50" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Right" Margin="0, 0, 10, 0" />
         <Button x:Name="BtnProzent" Grid.Row="1" Grid.Column="0" Content="%" Style="{StaticResource NumberStyle}" Click="BtnProzent_Click"/>
@@ -52,7 +52,7 @@
         <Button x:Name="BtnDel" Grid.Row="1" Grid.Column="3" Content="DEL" Style="{StaticResource NumberStyle}" Click="BtnDel_Click"/>
         <Button x:Name="BtnOverOne" Grid.Row="2" Grid.Column="0" Content="1/x" Style="{StaticResource NumberStyle}" Click="BtnOverOne_Click"/>
         <Button x:Name="BtnPowerTwo" Grid.Row="2" Grid.Column="1" Content="x^2" Style="{StaticResource NumberStyle}" Click="BtnPowerTwo_Click"/>
-        <Button x:Name="BtnSqrt" Grid.Row="2" Grid.Column="2" Content="2.Wurzel(x)" Style="{StaticResource NumberStyle}" Click="BtnSqrt_Click"/>
+        <Button x:Name="BtnSqrt" Grid.Row="2" Grid.Column="2" Content="√" Style="{StaticResource NumberStyle}" Click="BtnSqrt_Click"/>
         <Button x:Name="BtnDivision" Grid.Row="2" Grid.Column="3" Content="/" Style="{StaticResource NumberStyle}" Click="BtnDivision_Click"/>
         <Button x:Name="Btn7" Grid.Row="3" Grid.Column="0" Content="7" Style="{StaticResource NumberStyle}" Click="Btn7_Click"/>
         <Button x:Name="Btn8" Grid.Row="3" Grid.Column="1" Content="8" Style="{StaticResource NumberStyle}" Click="Btn8_Click"/>
@@ -75,8 +75,8 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="BtnSpeichern" Grid.Column="0" Content="Speichern" Style="{StaticResource NumberStyle}"/>
-            <Button x:Name="BtnLaden" Grid.Column="1" Content="Laden" Style="{StaticResource NumberStyle}"/>
+            <Button x:Name="BtnSpeichern" Grid.Column="0" Content="Speichern" Style="{StaticResource NumberStyle}" Click="BtnSpeichern_Click"/>
+            <Button x:Name="BtnLaden" Grid.Column="1" Content="Laden" Style="{StaticResource NumberStyle}" Click="BtnLaden_Click"/>
         </Grid>
 
     </Grid>

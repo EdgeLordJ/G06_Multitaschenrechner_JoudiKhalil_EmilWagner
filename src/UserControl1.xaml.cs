@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
@@ -21,6 +22,7 @@ namespace Multitaschenrechner
     public partial class UserControl1 : UserControl
     {
         private NormalCalc calc = new NormalCalc();
+        private NormalCalcList calcList = new NormalCalcList();
 
         public UserControl1()
         {
@@ -109,6 +111,11 @@ namespace Multitaschenrechner
         private void BtnEquals_Click(object sender, RoutedEventArgs e)
         {
             double result = calc.Berechnen(lblOutput.Content.ToString());
+            calc.Rechnung = lblOutput.Content.ToString();
+            calc.Ergebnis = result.ToString();
+            calcList.Add(calc);
+            calc = new NormalCalc();
+            calcList.UpdateListBox(ListBoxOutput, lblOutput);
             lblOutput.Content = result;
         }
 
@@ -134,7 +141,7 @@ namespace Multitaschenrechner
 
         private void BtnSqrt_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString("Sqrt(", lblOutput);
+            calc.AddString("√(", lblOutput);
         }
 
         private void BtnBracketOpen_Click(object sender, RoutedEventArgs e)
@@ -155,6 +162,46 @@ namespace Multitaschenrechner
         private void BtnProzent_Click(object sender, RoutedEventArgs e)
         {
             calc.Percent(lblOutput);
+        }
+
+        private void ListBoxOutput_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ListBoxOutput.SelectedItem != null)
+            {
+                string[] parts = ListBoxOutput.SelectedItem.ToString().Split(" =");
+                calcList.SetLastCalc(parts[0].ToString(), lblOutput);
+            }
+        }
+
+        private void BtnSpeichern_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog ofd = new SaveFileDialog()
+            {
+                Title = "Save your Calculation History",
+                Filter = "CSV Files (*.csv, *.txt)|*.csv;*.txt|All Files (*.*)|*.*"
+            };
+
+            if (ofd.ShowDialog() == true)
+            {
+                string filename = ofd.FileName;
+                calcList.Save(filename);
+            }
+        }
+
+        private void BtnLaden_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog()
+            {
+                Title = "Open a Calculation History",
+                Filter = "CSV Files (*.csv, *.txt)|*.csv;*.txt|All Files (*.*)|*.*"
+            };
+
+            if (ofd.ShowDialog() == true)
+            {
+                string filename = ofd.FileName;
+                calcList.Load(filename);
+                calcList.UpdateListBox(ListBoxOutput, lblOutput);
+            }
         }
     }
 }
