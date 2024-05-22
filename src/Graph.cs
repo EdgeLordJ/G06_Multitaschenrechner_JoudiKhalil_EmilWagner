@@ -19,19 +19,9 @@ namespace Multitaschenrechner
         private Func<double, double> _function;
 
         private Brush _color = new SolidColorBrush(Colors.White);
-        private string _content = "";
+        
 
-        public string Content
-        {
-            get
-            {
-                return _content;
-            }
-            set
-            {
-
-            }
-        }
+        
         public Brush Color { get; set; }
 
         public Func<double, double> Function
@@ -75,39 +65,7 @@ namespace Multitaschenrechner
             canvas.Children.Add(graph);
         }
 
-        public void DrawButtonLabel(Grid grid, int i)
-        {
-            Button b = new Button()
-            {
-                Content = Convert.ToString(i+1),
-                Background = Color,
-                
-                
-            };
-            Grid.SetRow(b, i);
-
-            Rectangle r = new Rectangle()
-            {
-                Fill = Brushes.Gray,
-                
-            };
-            Grid.SetColumn(r, 1);
-            Grid.SetRow(r, i);
-
-            Label l = new Label()
-            {
-               Name = $"LabelGraph{i}",
-               Content = Content,
-            };
-            Grid.SetColumn(l, 1);
-            Grid.SetRow(l, i);
-
-            grid.Children.Add(b);
-            grid.Children.Add(r);
-            grid.Children.Add(l);
-
-            
-        }
+        
 
     }
 }

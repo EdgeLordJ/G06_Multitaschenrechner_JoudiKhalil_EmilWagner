@@ -22,6 +22,10 @@ namespace Multitaschenrechner
         
         }
 
+        public List<Graph> GetList()
+        {
+            return this._grapheneList;
+        }
         public void Add(Graph graph)
         {
 
@@ -43,27 +47,15 @@ namespace Multitaschenrechner
             }
         }
 
-        public void DrawLabelButton(Grid grid)
-        {
-            for (int i = 0; i < this._grapheneList.Count; i++)
-            {
-                this._grapheneList[i].DrawButtonLabel(grid, i);
-            }
-        }
-
-        public void DrawGraphene(Canvas canvas)
+        public void DrawGraphene(Canvas canvas, Label label)
         {
             
             for (int i = 0; i < this._grapheneList.Count; i++)
             {
-                if (this._grapheneList[i].Content == "")
-                {
-
-                }
-                else
-                {
-                    this._grapheneList[i].DrawGraph(canvas);
-                }
+                
+                
+                this._grapheneList[i].DrawGraph(canvas);
+                
                 
             }
         }
