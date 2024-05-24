@@ -39,6 +39,7 @@ namespace Multitaschenrechner
                 lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
                 lblOutput.Content += $"{nums * nums}";
                 lastNums = $"{nums * nums}";
+                Logging.logger.Information("Zahl wurde quadriert:", nums);
             }
         }
 
@@ -49,6 +50,7 @@ namespace Multitaschenrechner
                 lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
                 lblOutput.Content += $"{1 / nums}";
                 lastNums = $"{1 / nums}";
+                Logging.logger.Information("1 wurde durch Zahl geteilt:", nums);
             }
         }
 
@@ -59,6 +61,7 @@ namespace Multitaschenrechner
                 lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
                 lblOutput.Content += $"{-nums}";
                 lastNums = $"{-nums}";
+                Logging.logger.Information("Zahl wurde negiert:", nums);
             }
         }
 
@@ -69,6 +72,7 @@ namespace Multitaschenrechner
                 lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
                 lblOutput.Content += $"{nums / 100}";
                 lastNums = $"{nums / 100}";
+                Logging.logger.Information("Prozentwert wurde berechnet:", nums);
             }
         }
 
@@ -182,6 +186,7 @@ namespace Multitaschenrechner
 
             if (parts.Length == 2)
             {
+                Logging.logger.Information("Zeile wurde deserialisiert:", serialized);
                 string rechnung = parts[0];
                 string ergebnis = parts[1];
 
@@ -191,6 +196,7 @@ namespace Multitaschenrechner
             }
             else
             {
+                Logging.logger.Error("Anzahl der deserialisierten Werte stimmen nicht überein:", serialized);
                 throw new ArgumentException("Anzahl der deserialisierten Werte stimmt nicht überein.");
             }
         }
@@ -202,10 +208,11 @@ namespace Multitaschenrechner
             NCalc.Expression expr = new NCalc.Expression(rechnung);
             try
             {
-                return expr.Evaluate().ToString(); // Fehler bei 2 mal "=" drücken wenn z.B. 3.2 drin steht
+                return expr.Evaluate().ToString();
             }
             catch (Exception e)
             {
+                Logging.logger.Error(e, "Fehler beim Berechnen der Rechnung:", rechnung);
                 return "undefined";
             }
         }

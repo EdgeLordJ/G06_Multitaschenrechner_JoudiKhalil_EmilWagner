@@ -18,6 +18,7 @@ namespace Multitaschenrechner
         {
             if (calc.Rechnung != "0")
             {
+                Logging.logger.Information("Rechnung wurde hinzugefügt:" , calc.Rechnung, "=", calc.Ergebnis);
                 calcs.Add(calc);
             }
         }
@@ -29,6 +30,7 @@ namespace Multitaschenrechner
             {
                 listBox.Items.Add($"{calc.Rechnung} = {calc.Ergebnis}");
             }
+            Logging.logger.Information("ListBox wurde aktualisiert");
         }
 
         public void Save(string filename)
@@ -64,6 +66,7 @@ namespace Multitaschenrechner
                         catch (ArgumentException)
                         {
                             // Einträge ignorieren die nicht gelesen werden können
+                            Logging.logger.Information("Eintrag konnte nicht gelesen werden: {line}", line);
                         }
 
                     }
@@ -71,6 +74,7 @@ namespace Multitaschenrechner
             }
             catch (FileNotFoundException)
             {
+                Logging.logger.Error("Datei konnte nicht gelesen werden: {filename}", filename);
                 MessageBox.Show($"Datei konnte nicht gelesen werden: {filename}");
             }
         }
