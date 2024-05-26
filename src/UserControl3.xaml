@@ -13,9 +13,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="#1C1F21">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="1.7*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -64,8 +64,8 @@
             <Button x:Name="Btn8" Grid.Row="1" Grid.Column="1" Content="8" Style="{StaticResource NumberStyle}" Click="Btn8_Click"/>
             <Button x:Name="Btn9" Grid.Row="1" Grid.Column="2" Content="9" Style="{StaticResource NumberStyle}" Click="Btn9_Click"/>
             <Button x:Name="Btn4" Grid.Row="2" Grid.Column="0" Content="4" Style="{StaticResource NumberStyle}" Click="Btn4_Click"/>
-            <Button x:Name="Btn5" Grid.Row="2" Grid.Column="1" Content="5" Style="{StaticResource NumberStyle}" Click="Btn5_Click" Height="88" Margin="1,1,1,0" VerticalAlignment="Top"/>
-            <Button x:Name="Btn6" Grid.Row="2" Grid.Column="2" Content="6"  Style="{StaticResource NumberStyle}" Click="Btn6_Click"/>
+            <Button x:Name="Btn5" Grid.Row="2" Grid.Column="1" Content="5" Style="{StaticResource NumberStyle}" Click="Btn5_Click"/>
+            <Button x:Name="Btn6" Grid.Row="2" Grid.Column="2" Content="6" Style="{StaticResource NumberStyle}" Click="Btn6_Click"/>
             <Button x:Name="Btn1" Grid.Row="3" Grid.Column="0" Content="1" Style="{StaticResource NumberStyle}" Click="Btn1_Click"/>
             <Button x:Name="Btn2" Grid.Row="3" Grid.Column="1" Content="2" Style="{StaticResource NumberStyle}" Click="Btn2_Click"/>
             <Button x:Name="Btn3" Grid.Row="3" Grid.Column="2" Content="3" Style="{StaticResource NumberStyle}" Click="Btn3_Click"/>
