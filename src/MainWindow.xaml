@@ -44,9 +44,14 @@
                         <TextBlock Text="Diagramm" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
-                
-                
-               
+                <RadioButton x:Name="rbtnCurrency" Margin="10" GroupName="GroupMenu" Checked="rbtnCurrency_Checked">
+                    <StackPanel Orientation="Horizontal">
+                        <Image />
+                        <TextBlock Text="Währungsumrechner" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+
+
             </StackPanel>
 
             <RadioButton x:Name="rbtnSettings" Margin="10" Grid.Row="5" GroupName="GroupMenu">

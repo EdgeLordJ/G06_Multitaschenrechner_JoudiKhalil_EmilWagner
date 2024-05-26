@@ -38,6 +38,7 @@ Joudi: Fokus: Back End (der normale Taschenrechner) und auch Front End ein bissc
 | 15.05 | Prozent, negieren, Hoch 2, Wurzel, 1 Durch x fertig; Komma fertig angepasst; Klammern Funktionalität geändert         |
 | 22.05 | Normaler Taschenrechner fertig; Logging fehlt noch                                                                    |
 | 24.05 | Logging Pakete installiert; Normaler Taschenrechner nötige Logs gemacht; offiziell fertig mit Normaler Taschenrechner |
+| 26.05 | Neues UserControl Fenster hinzugefügt für den Währungrechner bzw. Währungsrechner angefangen; Basis Design fertig     |
 
 ## Emil
 | Tag  | Thema                                                                                                                         |
