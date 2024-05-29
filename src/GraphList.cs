@@ -52,9 +52,15 @@ namespace Multitaschenrechner
             
             for (int i = 0; i < this._grapheneList.Count; i++)
             {
+                if (this._grapheneList[i].Function == null)
+                {
+
+                }
+                else
+                {
+                    this._grapheneList[i].DrawGraph(canvas);
+                }
                 
-                
-                this._grapheneList[i].DrawGraph(canvas);
                 
                 
             }
