@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using NCalc;
 
 namespace Multitaschenrechner
 {
@@ -12,9 +13,7 @@ namespace Multitaschenrechner
         private CoordinateSystem _coordinateSystem = new CoordinateSystem(20, 5);
         private GraphList _graphList = new GraphList();
 
-        private Func<double, double> test = x => 0;
-        private Func<double, double> test1 = x=> 2*x;
-        private Func<double, double> test2 = x=> Math.Pow(x, 2) * (5+5*5);
+        
 
         private Graph graph1;
         private Graph graph2;
@@ -25,21 +24,21 @@ namespace Multitaschenrechner
         private Label lblOutput = new Label();
         private int _rounds = 1;
 
+        private Label dynamicLabel;
+        private Button dynamicButton;
+        private Rectangle dynamicRect;
 
-        
+
+
+
 
 
         public UserControl2()
         {
             InitializeComponent();
 
-            
-            graph1 = new Graph(test1);
-            graph2 = new Graph(test2);
-
-            test_graph = new Graph(test);
-            
-            this._graphList.Add(test_graph);
+            //test_graph = new Graph("0*x");
+            //this._graphList.Add(test_graph);
 
             this.lblOutput = lbl1;
 
@@ -50,23 +49,23 @@ namespace Multitaschenrechner
         private void KoordinatenCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this._coordinateSystem.DrawCoordinateSystem(CanvasCoordinateSystem);
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
 
-            
 
         }
 
         private void ZoomIn_Click(object sender, RoutedEventArgs e)
         {
             this._coordinateSystem.ZoomIn(CanvasCoordinateSystem);
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
 
-            
         }
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
             this._coordinateSystem.ZoomOut(CanvasCoordinateSystem);
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
 
-            
         }
 
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
@@ -79,19 +78,19 @@ namespace Multitaschenrechner
                 return;
             }
 
-            this._graphList.Add(new Graph(test));
+            this._graphList.Add(new Graph(Convert.ToString( lblOutput.Content)));
 
             string lbl_name = $"lbl{this._rounds}";
             string btn_name = $"btn{this._rounds}";
             string rect_name = $"rect{this._rounds}";
 
-            Label dynamicLabel = (Label)this.FindName(lbl_name);
-            Button dynamicButton = (Button)this.FindName(btn_name);
-            Rectangle dynamicRect = (Rectangle)this.FindName(rect_name);
+            this.dynamicLabel = (Label)this.FindName(lbl_name);
+            this.dynamicButton = (Button)this.FindName(btn_name);
+            this.dynamicRect = (Rectangle)this.FindName(rect_name);
 
             dynamicLabel.Visibility = Visibility.Visible;
             dynamicButton.Visibility = Visibility.Visible;
-            dynamicRect.Visibility = Visibility.Visible;
+            this.dynamicRect.Visibility = Visibility.Visible;
             
 
             this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
@@ -100,15 +99,17 @@ namespace Multitaschenrechner
 
         private void ButtonGraph_Click(object sender, RoutedEventArgs e)
         {
+
             var button = sender as Button;
 
             string output_label = button.Name.Replace("btn", "");
 
             string lbl_name = $"lbl{output_label}";
 
-            Label dynamicLabel = (Label)this.FindName(lbl_name);
+            dynamicLabel = (Label)this.FindName(lbl_name);
 
             this.lblOutput = dynamicLabel;
+
         }
 
        
@@ -181,22 +182,22 @@ namespace Multitaschenrechner
 
         private void BtnPlus_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString("+", lblOutput);
+            calc.AddString(" + ", lblOutput);
         }
 
         private void BtnMinus_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString("-", lblOutput);
+            calc.AddString(" - ", lblOutput);
         }
 
         private void BtnMal_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString("*", lblOutput);
+            calc.AddString(" * ", lblOutput);
         }
 
         private void BtnDivision_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString("/", lblOutput);
+            calc.AddString(" / ", lblOutput);
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
@@ -208,5 +209,33 @@ namespace Multitaschenrechner
         {
             calc.AddString("x", lblOutput);
         }
+        private void BtnBracketOpen_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString("(", lblOutput);
+        }
+
+        private void BtnBracketClose_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString(")", lblOutput);
+        }
+
+        private void BtnNegativ_Click(object sender, RoutedEventArgs e)
+        {
+            calc.Negate(lblOutput);
+        }
+        private void BtnClear_Click(object sender, RoutedEventArgs e)
+        {
+            calc.Clear(lblOutput);
+        }
+
+        private void BtnPoint_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString(".", lblOutput);
+        }
+        private void BtnPowerTwo_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString("^2 ", lblOutput);
+        }
+
     }
 }

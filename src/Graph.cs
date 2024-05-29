@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows;
 using NCalc.Domain;
+using NCalc;
 
 namespace Multitaschenrechner
 {
@@ -35,13 +36,43 @@ namespace Multitaschenrechner
             }
         }
 
-        public Graph(Func<double, double> function) 
+        public Graph(string function) 
         { 
-            this._function = function;
+            
+            this._function = this.ConvertStringToFunc(function);
             
         }
+        public void Edit(string function)
+        {
+            this._function = this.ConvertStringToFunc(function);
+        }
+        public  Func<double, double> ConvertStringToFunc(string functionExpression)
+        {
+            string strings = "";
+            string number1 = "";
+            for (int i = 0; i < functionExpression.Length; i++)
+            {
+                if (functionExpression[i] == '^')
+                {
+                    strings = functionExpression.Split("^")[0];
+                    for (int j = strings.Length; j < strings.Length; j--)
+                    {
+                        if (strings[j] == ' ')
+                        {
+                            number1 = strings.Split(' ')[0];
+                        }
+                    }
+                }
+            }
+            return x =>
+            {
+                var expression = new NCalc.Expression(functionExpression);
+                expression.Parameters["x"] = x;
+                return Convert.ToDouble(expression.Evaluate());
+            };
+        }
 
-        public void DrawGraph(Canvas canvas)
+            public void DrawGraph(Canvas canvas)
         {
 
             double coordinateWidth = canvas.ActualWidth;

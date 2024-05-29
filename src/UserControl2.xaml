@@ -112,30 +112,30 @@
                 </Grid.RowDefinitions>
                 <Button x:Name="Btne" Content="e" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="BtnC" Grid.Column="1" Grid.ColumnSpan="2" Content="c" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnDel" Grid.Column="3" Content="Del" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnDel" Grid.Column="3" Content="Del" Style="{StaticResource NumberStyle}" Click="BtnDel_Click"/>
                 <Button x:Name="BtnX" Grid.Row="1" Grid.Column="0" Content="x" Style="{StaticResource NumberStyle}" Click="BtnX_Click"/>
                 <Button x:Name="BtnY" Grid.Row="1" Grid.Column="1" Content="y" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="BtnEqual" Grid.Row="1" Grid.Column="2" Content="=" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnPow2" Grid.Row="1" Grid.Column="3" Content="x^2" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnPow2" Grid.Row="1" Grid.Column="3" Content="x^2" Style="{StaticResource NumberStyle}" Click="BtnPowerTwo_Click"/>
                 <Button x:Name="BtnRoot2" Grid.Row="2" Grid.Column="0" Content="2.Wurzel(x)" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnBracketL" Grid.Row="2" Grid.Column="1" Content="(" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnBracketR" Grid.Row="2" Grid.Column="2" Content=")" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnBracketL" Grid.Row="2" Grid.Column="1" Content="(" Style="{StaticResource NumberStyle}" Click="BtnBracketOpen_Click"/>
+                <Button x:Name="BtnBracketR" Grid.Row="2" Grid.Column="2" Content=")" Style="{StaticResource NumberStyle}" Click="BtnBracketClose_Click"/>
                 <Button x:Name="BtnPowY" Grid.Row="2" Grid.Column="3" Content="x^y" Style="{StaticResource NumberStyle}"/>
                 <Button x:Name="Btn7" Grid.Row="3" Grid.Column="0" Content="7" Style="{StaticResource NumberStyle}" Click="Btn7_Click"/>
                 <Button x:Name="Btn8" Grid.Row="3" Grid.Column="1" Content="8" Style="{StaticResource NumberStyle}" Click="Btn8_Click"/>
                 <Button x:Name="Btn9" Grid.Row="3" Grid.Column="2" Content="9" Style="{StaticResource NumberStyle}" Click="Btn9_Click"/>
-                <Button x:Name="BtnTimes" Grid.Row="3" Grid.Column="3" Content="x" Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnTimes" Grid.Row="3" Grid.Column="3" Content="x" Style="{StaticResource NumberStyle}" Click="BtnMal_Click"/>
                 <Button x:Name="Btn4" Grid.Row="4" Grid.Column="0" Content="4" Style="{StaticResource NumberStyle}" Click="Btn4_Click"/>
                 <Button x:Name="Btn5" Grid.Row="4" Grid.Column="1" Content="5" Style="{StaticResource NumberStyle}" Click="Btn5_Click"/>
                 <Button x:Name="Btn6" Grid.Row="4" Grid.Column="2" Content="6" Style="{StaticResource NumberStyle}" Click="Btn6_Click"/>
-                <Button x:Name="BtnMinus" Grid.Row="4" Grid.Column="3" Content="-" Style="{StaticResource NumberStyle}" />
+                <Button x:Name="BtnMinus" Grid.Row="4" Grid.Column="3" Content="-" Style="{StaticResource NumberStyle}" Click="BtnMinus_Click"/>
                 <Button x:Name="Btn1" Grid.Row="5" Grid.Column="0" Content="1" Style="{StaticResource NumberStyle}" Click="Btn1_Click"/>
                 <Button x:Name="Btn2" Grid.Row="5" Grid.Column="1" Content="2" Style="{StaticResource NumberStyle}" Click="Btn2_Click"/>
                 <Button x:Name="Btn3" Grid.Row="5" Grid.Column="2" Content="3" Style="{StaticResource NumberStyle}" Click="Btn3_Click"/>
-                <Button x:Name="BtnPlus" Grid.Row="5" Grid.Column="3" Content="+" Style="{StaticResource NumberStyle}"/>
-                <Button x:Name="BtnTurning" Grid.Row="6" Grid.Column="0" Content="(-)" Style="{StaticResource NumberStyle}" />
+                <Button x:Name="BtnPlus" Grid.Row="5" Grid.Column="3" Content="+" Style="{StaticResource NumberStyle}" Click="BtnPlus_Click"/>
+                <Button x:Name="BtnTurning" Grid.Row="6" Grid.Column="0" Content="(-)" Style="{StaticResource NumberStyle}" Click="BtnNegativ_Click"/>
                 <Button x:Name="Btn0" Grid.Row="6" Grid.Column="1" Content="0" Style="{StaticResource NumberStyle}" Click="Btn0_Click"/>
-                <Button x:Name="BtnDot" Grid.Row="6" Grid.Column="2" Content="." Style="{StaticResource NumberStyle}"/>
+                <Button x:Name="BtnDot" Grid.Row="6" Grid.Column="2" Content="." Style="{StaticResource NumberStyle}" Click="BtnPoint_Click"/>
                 <Button x:Name="BtnEnter" Grid.Row="6" Grid.Column="3" Content="Enter" Style="{StaticResource Equalstyle}" Click="BtnEnter_Click" IsDefault="True"/>
             </Grid>
             
