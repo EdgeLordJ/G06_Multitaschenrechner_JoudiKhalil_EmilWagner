@@ -38,13 +38,9 @@
             <Border Grid.Row="2"  Grid.ColumnSpan="2" BorderBrush="White" BorderThickness="1" CornerRadius="2" Margin="3"/>
             <Label x:Name="lblTrgtNum" Content="0" Grid.Column="0" Grid.Row="2" FontSize="60" VerticalContentAlignment="Center" Foreground="White"/>
             <Label x:Name="lblTrgtCurrency" Content="$" Grid.Column="1" Grid.Row="2" FontSize="60" VerticalContentAlignment="Center" Foreground="White"/>
-            <ComboBox x:Name="ComboBoxTrgtCurrency" Grid.Column="0" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" FontSize="30">
-                <ComboBoxItem Content="Euro - €"/>
-                <ComboBoxItem Content="US-Dollar - $" Selector.IsSelected="True"/>
+            <ComboBox x:Name="ComboBoxTrgtCurrency" Grid.Column="0" Grid.Row="4" Margin="3" VerticalContentAlignment="Center" FontSize="30" SelectionChanged="ComboBoxTrgtCurrency_SelectionChanged">
             </ComboBox>
-            <ComboBox x:Name="ComboBoxSrcCurrency" Grid.Column="0" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" FontSize="30">
-                <ComboBoxItem Content="Euro - €" Selector.IsSelected="True"/>
-                <ComboBoxItem Content="US-Dollar - $"/>
+            <ComboBox x:Name="ComboBoxSrcCurrency" Grid.Column="0" Grid.Row="1" Margin="3" VerticalContentAlignment="Center" FontSize="30" SelectionChanged="ComboBoxSrcCurrency_SelectionChanged">
             </ComboBox>
         </Grid>
         <Grid Grid.Column="1">
