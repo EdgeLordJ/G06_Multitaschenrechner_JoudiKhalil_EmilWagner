@@ -46,33 +46,55 @@ namespace Multitaschenrechner
         {
             this._function = this.ConvertStringToFunc(function);
         }
-        public  Func<double, double> ConvertStringToFunc(string functionExpression)
+        public Func<double, double> ConvertStringToFunc(string functionExpression)
         {
-            string strings = "";
+            string string1 = "";
+            string string2 = "";
             string number1 = "";
+            string number2 = "";
+
             for (int i = 0; i < functionExpression.Length; i++)
             {
+                string1 = "";
+                string2 = "";
+                number1 = "";
+                number2 = "";
+
                 if (functionExpression[i] == '^')
                 {
-                    strings = functionExpression.Split("^")[0];
-                    for (int j = strings.Length; j < strings.Length; j--)
+                    string1 = functionExpression.Split('^')[0];
+                    string2 = functionExpression.Split('^')[1];
+
+                    int lastSpaceIndex = string1.LastIndexOf(' ');
+
+                    if (lastSpaceIndex != -1)
                     {
-                        if (strings[j] == ' ')
-                        {
-                            number1 = strings.Split(' ')[0];
-                        }
+                        number1 = string1.Substring(lastSpaceIndex + 1);
                     }
+                    else
+                    {
+                        number1 = string1;
+                    }
+
+                    number2 = string2.Split(' ')[0];
+
+                    string replacement = $"Math.Pow({number1},{number2})";
+                    functionExpression = functionExpression.Replace($"{number1}^{number2}", replacement).Trim(' ');
                 }
             }
-            return x =>
+
+            Func<double, double> function = x =>
             {
                 var expression = new NCalc.Expression(functionExpression);
                 expression.Parameters["x"] = x;
                 return Convert.ToDouble(expression.Evaluate());
             };
+
+            return function;
         }
 
-            public void DrawGraph(Canvas canvas)
+
+        public void DrawGraph(Canvas canvas)
         {
 
             double coordinateWidth = canvas.ActualWidth;
