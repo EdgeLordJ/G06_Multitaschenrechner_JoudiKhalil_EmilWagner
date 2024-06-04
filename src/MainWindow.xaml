@@ -22,7 +22,14 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Background="#272B2F">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        
+
+        <Grid Background="#272B2F" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition />
                 <RowDefinition />
@@ -64,7 +71,7 @@
             
         </Grid>
 
-        <ContentControl x:Name="CC" Grid.Column="1"/>
+        <ContentControl x:Name="CC" Grid.Column="1" Grid.Row="1"/>
 
     </Grid>
 </Window>
