@@ -32,12 +32,12 @@ namespace Multitaschenrechner
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
         {
-            currency.Clear(lblSrcNum);
+            currency.Clear(lblSrcNum, lblTrgtNum);
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-            currency.RemoveString(lblSrcNum);
+            currency.RemoveString(lblSrcNum, lblTrgtNum, ComboBoxSrcCurrency, ComboBoxTrgtCurrency);
         }
 
         private void Btn7_Click(object sender, RoutedEventArgs e)

@@ -73,13 +73,14 @@ namespace Multitaschenrechner
             lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
         }
 
-        public void RemoveString(Label lblOutput)
+        public async void RemoveString(Label lblOutput, Label lblOutputTrgt, ComboBox CBBaseCurrency, ComboBox CBTrgtCurrency)
         {
             if (lblOutput.Content.ToString().Length > 0)
             {
                 if (lblOutput.Content.ToString() == "")
                 {
                     lblOutput.Content = "0";
+                    lblOutputTrgt.Content = "0";
                 }
                 if (lblOutput.Content.ToString() != "")
                 {
@@ -94,13 +95,25 @@ namespace Multitaschenrechner
                             dot = false;
                         }
                     }
+                    lblOutput.Content = lblOutput.Content.ToString().Remove(lblOutput.Content.ToString().Length - 1);
+                    if (lblOutput.Content.ToString() == "")
+                    {
+                        lblOutput.Content = "0";
+                        lblOutputTrgt.Content = "0";
+                    }
+                    else
+                    {
+                        string[] Baseparts = CBBaseCurrency.SelectedItem.ToString().Split(" - ");
+                        string[] Trgtparts = CBTrgtCurrency.SelectedItem.ToString().Split(" - ");
+                        lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
+                    }
                 }
-                lblOutput.Content = lblOutput.Content.ToString().Remove(lblOutput.Content.ToString().Length - 1);
             }
         }
 
-        public void Clear(Label lblOutput)
+        public void Clear(Label lblInput, Label lblOutput)
         {
+            lblInput.Content = "0";
             lblOutput.Content = "0";
             dot = false;
             lastTwo = 0;

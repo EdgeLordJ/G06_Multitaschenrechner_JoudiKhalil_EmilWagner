@@ -2,13 +2,13 @@
 
 # Multi Taschenrechner
 
-## Must have
+## Must haves
 - Normaler Taschenrechner (+, -, /, *, Wurzel, hoch, clear)
 - Menüleiste
 - Rechnungergebnisse Speichern
 - Währungsrechner
 - Geogebra Fake
-## Nice have
+## Nice to haves
 - Wissenschaftlicher Rechner
 - Rechnungergebniss mit Rechnung Speichern
 - Hexa in Dezi usw.
@@ -30,7 +30,7 @@ Joudi: Fokus: Back End (der normale Taschenrechner) und auch Front End ein bissc
 # Code Dokumentation
 
 ## Joudi
-| Tag   | Thema                                                                                                                 |
+| Tag   | Was gemacht?                                                                                                          |
 | ----- | --------------------------------------------------------------------------------------------------------------------- |
 | 24.4. | PLanung                                                                                                               |
 | 1.5.  | Normaler Taschenrechner Design gemacht                                                                                |
@@ -40,9 +40,10 @@ Joudi: Fokus: Back End (der normale Taschenrechner) und auch Front End ein bissc
 | 24.05 | Logging Pakete installiert; Normaler Taschenrechner nötige Logs gemacht; offiziell fertig mit Normaler Taschenrechner |
 | 26.05 | Neues UserControl Fenster hinzugefügt für den Währungrechner bzw. Währungsrechner angefangen; Basis Design fertig     |
 | 29.05 | Währungsrechner fast fertig                                                                                           |
+| 04.06 | Währungsrechner fertiggestellt Logging fehlt                                                                          |
 
 ## Emil
-| Tag  | Thema                                                                                                                         |
+| Tag  | Was gemacht?                                                                                                                  |
 | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
 | 24.4 | PLanung                                                                                                                       |
 | 29.4 | Menü mit einem Tutorial angefangen                                                                                            |
