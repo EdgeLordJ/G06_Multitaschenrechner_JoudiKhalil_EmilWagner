@@ -47,7 +47,7 @@ namespace Multitaschenrechner
             }
         }
 
-        public void DrawGraphene(Canvas canvas, Label label)
+        public void DrawGraphene(Canvas canvas, Label label, int scale)
         {
             
             for (int i = 0; i < this._grapheneList.Count; i++)
@@ -58,7 +58,7 @@ namespace Multitaschenrechner
                 }
                 else
                 {
-                    this._grapheneList[i].DrawGraph(canvas);
+                    this._grapheneList[i].DrawGraph(canvas, scale);
                 }
                 
                 

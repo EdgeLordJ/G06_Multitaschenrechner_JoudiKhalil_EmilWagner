@@ -28,6 +28,9 @@ namespace Multitaschenrechner
         private Button dynamicButton;
         private Rectangle dynamicRect;
 
+        private int _scale = 20;
+        private int _scaleStep = 5;
+
 
 
 
@@ -49,7 +52,7 @@ namespace Multitaschenrechner
         private void KoordinatenCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             this._coordinateSystem.DrawCoordinateSystem(CanvasCoordinateSystem);
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
 
 
         }
@@ -57,14 +60,22 @@ namespace Multitaschenrechner
         private void ZoomIn_Click(object sender, RoutedEventArgs e)
         {
             this._coordinateSystem.ZoomIn(CanvasCoordinateSystem);
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
+            this._scale += this._scaleStep;
+
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
 
         }
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
             this._coordinateSystem.ZoomOut(CanvasCoordinateSystem);
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
+            int newScale = this._scale - this._scaleStep;
+            if (newScale >= 1) 
+            {
+                this._scale = newScale;
+            }
+
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
 
         }
 
@@ -93,7 +104,7 @@ namespace Multitaschenrechner
             this.dynamicRect.Visibility = Visibility.Visible;
             
 
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel);
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
 
         }
 
@@ -237,5 +248,9 @@ namespace Multitaschenrechner
             calc.AddString("^2 ", lblOutput);
         }
 
+        private void BtnRoot2_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString("2√(", lblOutput);
+        }
     }
 }
