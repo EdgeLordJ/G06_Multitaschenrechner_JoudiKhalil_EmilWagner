@@ -1,49 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using System.Windows;
-using NCalc.Domain;
 using NCalc;
-using System.Net.Http.Headers;
-using System.Security.Permissions;
 
 namespace Multitaschenrechner
 {
     public class Graph
     {
-
         private int _scale;
-
         private Func<double, double> _function;
-
         private Brush _color = new SolidColorBrush(Colors.White);
-        
 
-        
         public Brush Color { get; set; }
 
         public Func<double, double> Function
-        { get
-            {
-                return this._function;
-            }
-            set
-            {
-                this._function = value;
-            }
+        {
+            get { return this._function; }
+            set { this._function = value; }
         }
 
-        public Graph(string function) 
-        { 
-            
+        public Graph(string function)
+        {
             this._function = this.ConvertStringToFunc(function);
-            
         }
+
         public void Edit(string function)
         {
             this._function = this.ConvertStringToFunc(function);
@@ -51,151 +33,116 @@ namespace Multitaschenrechner
 
         private Func<double, double> ConvertStringToFunc(string functionExpression)
         {
-            //functionExpression = ConvertRootExpressions(functionExpression);
-            functionExpression = ConvertPowerExpressions(functionExpression);
-
-            Func<double, double> function = x =>
+            try
             {
-                var expression = new NCalc.Expression(functionExpression);
-                expression.Parameters["x"] = x;
-                return Convert.ToDouble(expression.Evaluate());
-            };
+                functionExpression = ConvertRootExpressions(functionExpression);
+                functionExpression = ConvertPowerExpressions(functionExpression);
 
-            return function;
-        }
-        public string ConvertRootExpressions(string functionExpression)
-        {
-            string string1 = "";
-            string string2 = "";
-            string number1 = "";
-            string number2 = "";
-
-            for (int i = 0; i < functionExpression.Length; i++)
-            {
-                string1 = "";
-                string2 = "";
-                number1 = "";
-                number2 = "";
-
-                if (functionExpression[i] == '√')
+                Func<double, double> function = x =>
                 {
-                    string1 = functionExpression.Split('√')[0];
-                    string2 = functionExpression.Split('√')[1];
+                    var expression = new NCalc.Expression(functionExpression);
+                    expression.Parameters["x"] = x;
+                    var result = expression.Evaluate();
+                    return Convert.ToDouble(result);
+                };
 
-                    int lastSpaceIndex = string1.LastIndexOf(' ');
-
-                    if (lastSpaceIndex != -1)
-                    {
-                        number1 = string1.Substring(lastSpaceIndex + 1);
-                    }
-                    else
-                    {
-                        number1 = string1;
-                    }
-
-                    number2 = string2.Split('(')[1];
-                    number2 = number2.Split(')')[0].Trim(' ');
-
-                    string replacement = $"{number2}^(1/{number1})";
-
-                    functionExpression = functionExpression.Replace($"{number1}√({number2})", replacement).Trim(' ');
-                }
-                
+                return function;
             }
-            return functionExpression;
-        }
-        public string ConvertPowerExpressions(string functionExpression)
-        {
-            string string1 = "";
-            string string2 = "";
-            string number1 = "";
-            string number2 = "";
-
-            for (int i = 0; i < functionExpression.Length; i++)
+            catch (Exception ex)
             {
-                string1 = "";
-                string2 = "";
-                number1 = "";
-                number2 = "";
-
-                if (functionExpression[i] == '^')
-                {
-                    string1 = functionExpression.Split('^')[0];
-                    string2 = functionExpression.Split('^')[1];
-
-                    int lastSpaceIndex = string1.LastIndexOf(' ');
-
-                    if (lastSpaceIndex != -1)
-                    {
-                        number1 = string1.Substring(lastSpaceIndex + 1);
-                    }
-                    else
-                    {
-                        number1 = string1;
-                    }
-
-                    number2 = string2.Split(' ')[0];
-
-                    string replacement = "";
-
-                    for (int k = 1; k < Convert.ToInt32(number2); k++)
-                    {
-                        if (k == 1)
-                        {
-                            replacement = replacement + $"({number1}*";
-                        }
-                        if (k+1 == Convert.ToInt32(number2))
-                        {
-                            replacement = replacement + $"{number1})";
-                        }
-                        else
-                        {
-                            replacement = replacement + $"{number1}*";
-
-                        }
-
-
-
-
-                    }
-                    
-
-                    functionExpression = functionExpression.Replace($"{number1}^{number2}", replacement).Trim(' ');
-                }
-
-                
+                throw new InvalidOperationException("Error converting function string to Func<double, double>: " + ex.Message);
             }
-            return functionExpression;
-
-            
         }
 
-
-        public void DrawGraph(Canvas canvas, int scale)
+        private string ConvertRootExpressions(string functionExpression)
         {
-
-            double coordinateWidth = canvas.ActualWidth;
-            double coordinateHeight = canvas.ActualHeight;
-            double centerX = coordinateWidth / 2;
-            double centerY = coordinateHeight / 2;
-
-            Polyline graph = new Polyline();
-            graph.Stroke = Color;
-            graph.StrokeThickness = 2;
-
-            for (double x = -centerX; x <= centerX; x++)
+            try
             {
-                double y = centerY - this._function(x / scale) * scale;
-                if (!double.IsNaN(y))
-                {
-                    graph.Points.Add(new Point(centerX + x, y));
-                }
-            }
+                string pattern = @"(\d*)√\(([^)]+)\)";
+                Regex regex = new Regex(pattern);
 
-            canvas.Children.Add(graph);
+                return regex.Replace(functionExpression, match =>
+                {
+                    string baseNumber = match.Groups[1].Value;
+                    string radicand = match.Groups[2].Value;
+
+                    if (string.IsNullOrEmpty(baseNumber))
+                    {
+                        baseNumber = "2"; // Default to square root if no base is provided
+                    }
+
+                    return $"Pow({radicand}, 1.0/{baseNumber})";
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Error converting root expressions: " + ex.Message);
+            }
+        }
+
+        private string ConvertPowerExpressions(string functionExpression)
+        {
+            try
+            {
+                string pattern = @"(\w+|\([^\)]+\))\^(\d+(\.\d+)?)";
+                Regex regex = new Regex(pattern);
+
+                return regex.Replace(functionExpression, match =>
+                {
+                    string baseNumber = match.Groups[1].Value;
+                    string exponent = match.Groups[2].Value;
+
+                    return $"Pow({baseNumber}, {exponent})";
+                });
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Error converting power expressions: " + ex.Message);
+            }
         }
 
         
+            public void DrawGraph(Canvas canvas, int scale)
+            {
+                try
+                {
+                    double coordinateWidth = canvas.ActualWidth;
+                    double coordinateHeight = canvas.ActualHeight;
+                    double centerX = coordinateWidth / 2;
+                    double centerY = coordinateHeight / 2;
 
+                    Polyline graph = new Polyline
+                    {
+                        Stroke = Color,
+                        StrokeThickness = 2
+                    };
+
+                    for (double x = -centerX; x <= centerX; x += 0.1) // Adjust the step for smoother graph
+                    {
+                        double y;
+                        try
+                        {
+                            y = this._function(x / scale);
+                        }
+                        catch
+                        {
+                            continue; // Skip if function evaluation throws an error
+                        }
+
+                        double canvasY = centerY - y * scale;
+                        if (canvasY >= 0 && canvasY <= coordinateHeight)
+                        {
+                            graph.Points.Add(new System.Windows.Point(centerX + x, canvasY));
+                        }
+                    }
+
+                    canvas.Children.Add(graph);
+                }
+                catch (Exception ex)
+                {
+                    throw new InvalidOperationException("Error drawing graph: " + ex.Message);
+                }
+            }
+        
     }
 }
