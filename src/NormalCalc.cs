@@ -205,6 +205,7 @@ namespace Multitaschenrechner
         {
             rechnung = rechnung.Replace(",", ".");
             rechnung = rechnung.Replace("√", "Sqrt");
+            rechnung = rechnung.Replace("÷", "/");
             NCalc.Expression expr = new NCalc.Expression(rechnung);
             try
             {

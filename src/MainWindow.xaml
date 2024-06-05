@@ -54,7 +54,13 @@
                 <RadioButton x:Name="rbtnCurrency" Margin="10" GroupName="GroupMenu" Checked="rbtnCurrency_Checked">
                     <StackPanel Orientation="Horizontal">
                         <Image />
-                        <TextBlock Text="Währungsumrechner" VerticalAlignment="Center"/>
+                        <TextBlock Text="Währungsrechner" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+                <RadioButton x:Name="rbtnCurrencyComparison" Margin="10" GroupName="GroupMenu" Checked="rbtnCurrencyComparison_Checked">
+                    <StackPanel Orientation="Horizontal">
+                        <Image />
+                        <TextBlock Text="Währungsvergleich" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
 

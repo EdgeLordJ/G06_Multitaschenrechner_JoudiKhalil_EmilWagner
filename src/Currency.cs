@@ -45,32 +45,38 @@ namespace Multitaschenrechner
 
         public async void AddString(string entry, Label lblOutput, Label lblOutputTrgt, ComboBox CBBaseCurrency, ComboBox CBTrgtCurrency)
         {
-            if (lastTwo < 2)
+            if (CBBaseCurrency.SelectedItem != null && CBTrgtCurrency.SelectedItem != null)
             {
-                if (dot == true)
+                if (lastTwo < 2)
                 {
-                    lastTwo += 1;
-                }
-                if (entry == ".")
-                {
-                    if (dot == false)
+                    if (dot == true)
                     {
-                        dot = true;
-                        lblOutput.Content += ".";
+                        lastTwo += 1;
+                    }
+                    if (entry == ".")
+                    {
+                        if (dot == false)
+                        {
+                            dot = true;
+                            lblOutput.Content += ".";
+                        }
+                    }
+                    else if (lblOutput.Content.ToString() == "0")
+                    {
+                        lblOutput.Content = entry;
+                    }
+                    else
+                    {
+                        lblOutput.Content += entry;
                     }
                 }
-                else if (lblOutput.Content.ToString() == "0")
+                if (CBBaseCurrency.SelectedItem != null && CBTrgtCurrency.SelectedItem != null)
                 {
-                    lblOutput.Content = entry;
-                }
-                else
-                {
-                    lblOutput.Content += entry;
+                    string[] Baseparts = CBBaseCurrency.SelectedItem.ToString().Split(" - ");
+                    string[] Trgtparts = CBTrgtCurrency.SelectedItem.ToString().Split(" - ");
+                    lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
                 }
             }
-            string[] Baseparts = CBBaseCurrency.SelectedItem.ToString().Split(" - ");
-            string[] Trgtparts = CBTrgtCurrency.SelectedItem.ToString().Split(" - ");
-            lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
         }
 
         public async void RemoveString(Label lblOutput, Label lblOutputTrgt, ComboBox CBBaseCurrency, ComboBox CBTrgtCurrency)
@@ -103,9 +109,12 @@ namespace Multitaschenrechner
                     }
                     else
                     {
-                        string[] Baseparts = CBBaseCurrency.SelectedItem.ToString().Split(" - ");
-                        string[] Trgtparts = CBTrgtCurrency.SelectedItem.ToString().Split(" - ");
-                        lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
+                        if (CBBaseCurrency.SelectedItem != null && CBTrgtCurrency.SelectedItem != null)
+                        {
+                            string[] Baseparts = CBBaseCurrency.SelectedItem.ToString().Split(" - ");
+                            string[] Trgtparts = CBTrgtCurrency.SelectedItem.ToString().Split(" - ");
+                            lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
+                        }
                     }
                 }
             }

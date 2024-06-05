@@ -27,7 +27,8 @@ namespace Multitaschenrechner
         {
             InitializeComponent();
 
-            currencies.GetCurrencies(ComboBoxSrcCurrency, ComboBoxTrgtCurrency);
+            currencies.SetComboBox(ComboBoxSrcCurrency);
+            currencies.SetComboBox(ComboBoxTrgtCurrency);
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)

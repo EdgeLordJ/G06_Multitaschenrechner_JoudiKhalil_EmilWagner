@@ -11,15 +11,20 @@ namespace Multitaschenrechner
 {
     public class CurrenciesCollection
     {
-        private static readonly HttpClient client = new HttpClient();
+        private HttpClient client = new HttpClient();
         public List<Currency> currencies = new List<Currency>();
+
+        public CurrenciesCollection()
+        {
+
+        }
 
         public void Add(Currency currency)
         {
             currencies.Add(currency);
         }
 
-        public async void GetCurrencies(ComboBox CB1, ComboBox CB2)
+        public async void GetCurrencies(ComboBox CB)
         {
             string apiUrl = $"https://api.frankfurter.app/currencies";
             HttpResponseMessage response = await client.GetAsync(apiUrl);
@@ -32,11 +37,13 @@ namespace Multitaschenrechner
             {
                 currencies.Add(new Currency(currency.Key, currency.Value.ToString()));
             }
+        }
 
+        public void SetComboBox(ComboBox CB)
+        {
             foreach (Currency currency in currencies)
             {
-                CB1.Items.Add($"{currency.Name} - {currency.Shortcut}");
-                CB2.Items.Add($"{currency.Name} - {currency.Shortcut}");
+                CB.Items.Add($"{currency.Name} - {currency.Shortcut}");
             }
         }
     }

@@ -39,5 +39,10 @@ namespace Multitaschenrechner
         {
             CC.Content = new UserControl3();
         }
+
+        private void rbtnCurrencyComparison_Checked(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new UserControl4();
+        }
     }
 }

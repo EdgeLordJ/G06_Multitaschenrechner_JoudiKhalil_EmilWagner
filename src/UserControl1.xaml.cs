@@ -100,7 +100,7 @@ namespace Multitaschenrechner
 
         private void BtnDivision_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString("/", lblOutput);
+            calc.AddString("÷", lblOutput);
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
