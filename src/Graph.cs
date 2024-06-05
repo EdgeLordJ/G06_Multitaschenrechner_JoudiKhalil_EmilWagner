@@ -41,7 +41,7 @@ namespace Multitaschenrechner
                 Func<double, double> function = x =>
                 {
                     var expression = new NCalc.Expression(functionExpression);
-                    expression.Parameters["x"] = x;
+                    expression.Parameters["x"] = x; // Definieren der Variablen x
                     expression.Parameters["e"] = Math.E;
                     var result = expression.Evaluate();
                     return Convert.ToDouble(result);
@@ -55,17 +55,18 @@ namespace Multitaschenrechner
             }
         }
 
+
         private string ConvertRootExpressions(string functionExpression)
         {
             try
             {
-                string pattern = @"(\d*)√\(([^)]+)\)";
+                string pattern = @"(\d*(\.\d+)?)√\(([^)]+)\)";
                 Regex regex = new Regex(pattern);
 
                 return regex.Replace(functionExpression, match =>
                 {
                     string baseNumber = match.Groups[1].Value;
-                    string radicand = match.Groups[2].Value;
+                    string radicand = match.Groups[3].Value;
 
                     if (string.IsNullOrEmpty(baseNumber))
                     {
@@ -85,15 +86,16 @@ namespace Multitaschenrechner
         {
             try
             {
-                string pattern = @"(\w+|\([^\)]+\))\^(\d+(\.\d+)?|\([^\)]+\))";
+                string pattern = @"(\b\w+|\([^\)]+\)|e)\^(\(.+?\)|\b\w+|\d+(\.\d+)?|e)"; //angepasster Regex
                 Regex regex = new Regex(pattern);
 
                 return regex.Replace(functionExpression, match =>
                 {
-                    string baseNumber = match.Groups[1].Value;
-                    string exponent = match.Groups[2].Value;
+                    string baseExpression = match.Groups[1].Value;
+                    string exponentExpression = match.Groups[2].Value;
 
-                    return $"Pow({baseNumber}, {exponent})";
+                    // Handle complex expressions by preserving parentheses if necessary
+                    return $"Pow({baseExpression}, {exponentExpression})";
                 });
             }
             catch (Exception ex)
@@ -101,6 +103,10 @@ namespace Multitaschenrechner
                 throw new InvalidOperationException("Error converting power expressions: " + ex.Message);
             }
         }
+
+
+
+
 
         public void DrawGraph(Canvas canvas, int scale)
         {

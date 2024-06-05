@@ -13,7 +13,7 @@ namespace Multitaschenrechner
     {
         private List<Graph> _grapheneList = new List<Graph>();
 
-        private Brush[] _brushesArray = new Brush[] { Brushes.Blue, Brushes.Green, Brushes.Red, Brushes.AliceBlue, Brushes.Gray, Brushes.Pink, Brushes.Yellow, Brushes.Orange, Brushes.DarkBlue, Brushes.Cyan };
+        private Brush[] _brushesArray = new Brush[] { Brushes.Blue, Brushes.Green, Brushes.Red, Brushes.Yellow, Brushes.Gray, Brushes.Pink, Brushes.Brown, Brushes.Orange, Brushes.DarkBlue, Brushes.Cyan };
 
         private List<Brush> _usedBrushes = new List<Brush>();
 
