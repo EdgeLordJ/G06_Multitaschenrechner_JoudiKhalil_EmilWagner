@@ -13,13 +13,10 @@ namespace Multitaschenrechner
         private CoordinateSystem _coordinateSystem = new CoordinateSystem(20, 5);
         private GraphList _graphList = new GraphList();
 
-        
-
-        private Graph graph1;
-        private Graph graph2;
-        private Graph test_graph;
-
         private NormalCalc calc = new NormalCalc();
+
+        private Graph _currentGraph;
+        private int _currentGraphIndex;
 
         private Label lblOutput = new Label();
         private int _rounds = 1;
@@ -31,99 +28,104 @@ namespace Multitaschenrechner
         private int _scale = 20;
         private int _scaleStep = 5;
 
-
-
-
-
+        string lbl_name = "lbl1";
+        string btn_name;
+        string rect_name;
 
         public UserControl2()
         {
             InitializeComponent();
-
-            //test_graph = new Graph("0*x");
-            //this._graphList.Add(test_graph);
-
             this.lblOutput = lbl1;
-
-
-
         }
 
         private void KoordinatenCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            this._coordinateSystem.DrawCoordinateSystem(CanvasCoordinateSystem);
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
-
-
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, this._coordinateSystem, this._scale);
         }
 
         private void ZoomIn_Click(object sender, RoutedEventArgs e)
         {
             this._coordinateSystem.ZoomIn(CanvasCoordinateSystem);
             this._scale += this._scaleStep;
-
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
-
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, this._coordinateSystem, this._scale);
         }
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
         {
             this._coordinateSystem.ZoomOut(CanvasCoordinateSystem);
             int newScale = this._scale - this._scaleStep;
-            if (newScale >= 1) 
+            if (newScale >= 1)
             {
                 this._scale = newScale;
             }
-
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
-
+            this._graphList.DrawGraphene(CanvasCoordinateSystem, this._coordinateSystem, this._scale);
         }
 
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
         {
-            this._rounds++;
-
-            if (this._graphList.GetList().Count == 10)
+            if (_currentGraph != null)
             {
-                BtnEnter.IsEnabled = true;
-                return;
+
+                this._graphList.GetList()[_currentGraphIndex].Edit(Convert.ToString( lblOutput.Content));
+                this._graphList.DrawGraphene(CanvasCoordinateSystem, _coordinateSystem, _scale);
             }
+            else
+            {
+                if (this._graphList.GetList().Count == 9)
+                {
+                    BtnEnter.IsEnabled = false;
+                    return;
+                }
 
-            this._graphList.Add(new Graph(Convert.ToString( lblOutput.Content)));
+                this.dynamicLabel = (Label)this.FindName(lbl_name);
+                if (Convert.ToString(this.dynamicLabel.Content) == "0")
+                {
+                    return;
+                }
 
-            string lbl_name = $"lbl{this._rounds}";
-            string btn_name = $"btn{this._rounds}";
-            string rect_name = $"rect{this._rounds}";
+                this._rounds++;
 
-            this.dynamicLabel = (Label)this.FindName(lbl_name);
-            this.dynamicButton = (Button)this.FindName(btn_name);
-            this.dynamicRect = (Rectangle)this.FindName(rect_name);
+                lbl_name = $"lbl{this._rounds}";
+                btn_name = $"btn{this._rounds}";
+                rect_name = $"rect{this._rounds}";
 
-            dynamicLabel.Visibility = Visibility.Visible;
-            dynamicButton.Visibility = Visibility.Visible;
-            this.dynamicRect.Visibility = Visibility.Visible;
-            
+                this.dynamicLabel = (Label)this.FindName(lbl_name);
+                this.dynamicButton = (Button)this.FindName(btn_name);
+                this.dynamicRect = (Rectangle)this.FindName(rect_name);
 
-            this._graphList.DrawGraphene(CanvasCoordinateSystem, dynamicLabel, this._scale);
+                dynamicLabel.Visibility = Visibility.Visible;
+                dynamicButton.Visibility = Visibility.Visible;
+                this.dynamicRect.Visibility = Visibility.Visible;
 
+                _graphList.Add(new Graph(Convert.ToString(lblOutput.Content)));
+
+                // Neuzeichnen aller Graphen
+                CanvasCoordinateSystem.Children.Clear();
+                _coordinateSystem.DrawCoordinateSystem(CanvasCoordinateSystem);
+                _graphList.DrawGraphene(CanvasCoordinateSystem, _coordinateSystem, _scale);
+            }
         }
+
+
+
+
+
+
 
         private void ButtonGraph_Click(object sender, RoutedEventArgs e)
         {
-
             var button = sender as Button;
-
             string output_label = button.Name.Replace("btn", "");
-
             string lbl_name = $"lbl{output_label}";
-
             dynamicLabel = (Label)this.FindName(lbl_name);
-
             this.lblOutput = dynamicLabel;
 
+            // Setzen des aktuellen bearbeiteten Graphen
+            _currentGraph = _graphList.GetGraphByLabelName(lbl_name);
+            _currentGraphIndex = Convert.ToInt32(output_label) - 1;
         }
 
-       
+
 
 
 
@@ -250,7 +252,17 @@ namespace Multitaschenrechner
 
         private void BtnRoot2_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString("2√(", lblOutput);
+            calc.AddString("√(", lblOutput);
+        }
+
+        private void Btne_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString("e", lblOutput);
+        }
+
+        private void BtnPowY_Click(object sender, RoutedEventArgs e)
+        {
+            calc.AddString("^", lblOutput);
         }
     }
 }
