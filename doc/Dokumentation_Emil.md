@@ -1,4 +1,4 @@
-## Emil
+# Dokumentation
 | Tag  | Was gemacht?                                                                                                                  |
 | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
 | 24.4 | PLanung                                                                                                                       |
@@ -11,3 +11,7 @@
 | 15.5 | Der Einstellungsbutton nach unten verschoben; Das Koordinatensystem erstellt wo man rein und raus zoomen kann;                |
 | 22.5 | Man kann jetzt Graphen zeichnen und rechts max 10 Graphen eingeben (noch nicht alle eingaben behandelt)                       |
 | 4.6  | Man kann bei dem Graph hoch und Wurzel zahlen eingeben und diese werden auch gezeichnet                                       |
+
+
+## Probleme
+| Problem | Lösung |

@@ -42,6 +42,7 @@ namespace Multitaschenrechner
                 {
                     var expression = new NCalc.Expression(functionExpression);
                     expression.Parameters["x"] = x;
+                    expression.Parameters["e"] = Math.E;
                     var result = expression.Evaluate();
                     return Convert.ToDouble(result);
                 };
@@ -84,7 +85,7 @@ namespace Multitaschenrechner
         {
             try
             {
-                string pattern = @"(\w+|\([^\)]+\))\^(\d+(\.\d+)?)";
+                string pattern = @"(\w+|\([^\)]+\))\^(\d+(\.\d+)?|\([^\)]+\))";
                 Regex regex = new Regex(pattern);
 
                 return regex.Replace(functionExpression, match =>
@@ -101,48 +102,46 @@ namespace Multitaschenrechner
             }
         }
 
-        
-            public void DrawGraph(Canvas canvas, int scale)
+        public void DrawGraph(Canvas canvas, int scale)
+        {
+            try
             {
-                try
+                double coordinateWidth = canvas.ActualWidth;
+                double coordinateHeight = canvas.ActualHeight;
+                double centerX = coordinateWidth / 2;
+                double centerY = coordinateHeight / 2;
+
+                Polyline graph = new Polyline
                 {
-                    double coordinateWidth = canvas.ActualWidth;
-                    double coordinateHeight = canvas.ActualHeight;
-                    double centerX = coordinateWidth / 2;
-                    double centerY = coordinateHeight / 2;
+                    Stroke = Color,
+                    StrokeThickness = 2
+                };
 
-                    Polyline graph = new Polyline
+                for (double x = -centerX; x <= centerX; x += 0.1) // Adjust the step for smoother graph
+                {
+                    double y;
+                    try
                     {
-                        Stroke = Color,
-                        StrokeThickness = 2
-                    };
-
-                    for (double x = -centerX; x <= centerX; x += 0.1) // Adjust the step for smoother graph
+                        y = this._function(x / scale);
+                    }
+                    catch
                     {
-                        double y;
-                        try
-                        {
-                            y = this._function(x / scale);
-                        }
-                        catch
-                        {
-                            continue; // Skip if function evaluation throws an error
-                        }
-
-                        double canvasY = centerY - y * scale;
-                        if (canvasY >= 0 && canvasY <= coordinateHeight)
-                        {
-                            graph.Points.Add(new System.Windows.Point(centerX + x, canvasY));
-                        }
+                        continue; // Skip if function evaluation throws an error
                     }
 
-                    canvas.Children.Add(graph);
+                    double canvasY = centerY - y * scale;
+                    if (canvasY >= 0 && canvasY <= coordinateHeight)
+                    {
+                        graph.Points.Add(new System.Windows.Point(centerX + x, canvasY));
+                    }
                 }
-                catch (Exception ex)
-                {
-                    throw new InvalidOperationException("Error drawing graph: " + ex.Message);
-                }
+
+                canvas.Children.Add(graph);
             }
-        
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Error drawing graph: " + ex.Message);
+            }
+        }
     }
 }
