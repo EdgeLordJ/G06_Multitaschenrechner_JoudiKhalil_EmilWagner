@@ -41,7 +41,7 @@ namespace Multitaschenrechner
 
         public void DrawRects(Canvas canvas, string currency)
         {
-            int distance = 0;
+            int distance = 10;
             GetData(currency);
 
             double maxRate = CurrencyRates.Values.Max();
@@ -60,8 +60,11 @@ namespace Multitaschenrechner
                     Fill = Brushes.Blue,
                 };
 
-                Canvas.SetTop(label, distance);
+                Canvas.SetTop(label, 10);
                 Canvas.SetLeft(label, distance);
+
+                Canvas.SetTop(rect, canvas.ActualHeight-rect.Height);
+                Canvas.SetLeft(rect, distance);
                 
                 canvas.Children.Add(label);
                 canvas.Children.Add(rect);

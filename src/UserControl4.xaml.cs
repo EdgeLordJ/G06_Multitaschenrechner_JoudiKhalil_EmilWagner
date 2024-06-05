@@ -21,16 +21,19 @@ namespace Multitaschenrechner
     public partial class UserControl4 : UserControl
     {
         CurrenciesCollection currencies = new CurrenciesCollection();
+        CurrencyComparison comparison = new CurrencyComparison();
         public UserControl4()
         {
             InitializeComponent();
 
-            currencies.SetComboBox(CBSrcCurrency);
+            currencies.GetCurrencies(CBSrcCurrency);
         }
 
         private void CBSrcCurrency_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string[] parts = CBSrcCurrency.SelectedItem.ToString().Split(" - ");
+
+            comparison.DrawRects(CanvasDraw, parts[1]);
         }
     }
 }

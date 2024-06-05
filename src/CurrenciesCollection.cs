@@ -26,6 +26,7 @@ namespace Multitaschenrechner
 
         public async void GetCurrencies(ComboBox CB)
         {
+            currencies.Clear();
             string apiUrl = $"https://api.frankfurter.app/currencies";
             HttpResponseMessage response = await client.GetAsync(apiUrl);
             response.EnsureSuccessStatusCode();
@@ -37,10 +38,7 @@ namespace Multitaschenrechner
             {
                 currencies.Add(new Currency(currency.Key, currency.Value.ToString()));
             }
-        }
 
-        public void SetComboBox(ComboBox CB)
-        {
             foreach (Currency currency in currencies)
             {
                 CB.Items.Add($"{currency.Name} - {currency.Shortcut}");
