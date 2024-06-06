@@ -23,6 +23,8 @@ namespace Multitaschenrechner
         public MainWindow()
         {
             InitializeComponent();
+
+            CC.Content = new UserControl1();
         }
 
         private void rbtnCalculator_Checked(object sender, RoutedEventArgs e)

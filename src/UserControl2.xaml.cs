@@ -1,9 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using NCalc;
 
 namespace Multitaschenrechner
@@ -24,6 +27,7 @@ namespace Multitaschenrechner
         private Label dynamicLabel;
         private Button dynamicButton;
         private Rectangle dynamicRect;
+        private Border dynamicBorder;
 
         private int _scale = 20;
         private int _scaleStep = 5;
@@ -31,6 +35,7 @@ namespace Multitaschenrechner
         string lbl_name = "lbl1";
         string btn_name;
         string rect_name;
+        string border_name;
 
         public UserControl2()
         {
@@ -61,6 +66,31 @@ namespace Multitaschenrechner
             this._graphList.DrawGraphene(CanvasCoordinateSystem, this._coordinateSystem, this._scale);
         }
 
+        private void btnScreenshot_Click(object sender, RoutedEventArgs e)
+        {
+            RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)CanvasCoordinateSystem.ActualWidth, (int)CanvasCoordinateSystem.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
+
+            renderBitmap.Render(CanvasCoordinateSystem);
+
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "PNG-Bilder (*.png)|*.png|Alle Dateien (*.*)|*.*";
+            saveDialog.DefaultExt = ".png";
+            saveDialog.Title = "Screenshot speichern";
+            bool? result = saveDialog.ShowDialog();
+
+            if (result == true)
+            {
+                string filePath = saveDialog.FileName;
+                using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+            }
+        }
+
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
         {
             if (_currentGraph != null)
@@ -88,14 +118,17 @@ namespace Multitaschenrechner
                 lbl_name = $"lbl{this._rounds}";
                 btn_name = $"btn{this._rounds}";
                 rect_name = $"rect{this._rounds}";
+                border_name = $"border{this._rounds}";
 
                 this.dynamicLabel = (Label)this.FindName(lbl_name);
                 this.dynamicButton = (Button)this.FindName(btn_name);
                 this.dynamicRect = (Rectangle)this.FindName(rect_name);
+                this.dynamicBorder = (Border)this.FindName(border_name);
 
                 dynamicLabel.Visibility = Visibility.Visible;
                 dynamicButton.Visibility = Visibility.Visible;
                 this.dynamicRect.Visibility = Visibility.Visible;
+                this.dynamicBorder.Visibility = Visibility.Visible;
 
                 _graphList.Add(new Graph(Convert.ToString(lblOutput.Content)));
 
@@ -120,7 +153,7 @@ namespace Multitaschenrechner
             dynamicLabel = (Label)this.FindName(lbl_name);
             this.lblOutput = dynamicLabel;
 
-            // Setzen des aktuellen bearbeiteten Graphen
+            
             _currentGraph = _graphList.GetGraphByLabelName(lbl_name);
             _currentGraphIndex = Convert.ToInt32(output_label) - 1;
         }
@@ -264,5 +297,7 @@ namespace Multitaschenrechner
         {
             calc.AddString("^", lblOutput);
         }
+
+        
     }
 }
