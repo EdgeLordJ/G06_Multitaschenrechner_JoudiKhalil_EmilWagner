@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -30,7 +31,7 @@ namespace Multitaschenrechner
             Name = name;
         }
 
-        public async Task<decimal> ConvertCurrency(string baseCurrency, string targetCurrency, decimal amount)
+        public async Task<double> ConvertCurrency(string baseCurrency, string targetCurrency, double amount)
         {
             string apiUrl = $"https://api.frankfurter.app/latest?from={baseCurrency};to={targetCurrency}";
             HttpResponseMessage response = await client.GetAsync(apiUrl);
@@ -38,7 +39,7 @@ namespace Multitaschenrechner
 
             string responseBody = await response.Content.ReadAsStringAsync();
             JObject json = JObject.Parse(responseBody);
-            decimal exchangeRate = (decimal)json["rates"][targetCurrency];
+            double exchangeRate = (double)json["rates"][targetCurrency];
 
             return Math.Round(amount * exchangeRate, 2);
         }
@@ -49,7 +50,7 @@ namespace Multitaschenrechner
             {
                 if (lastTwo < 2)
                 {
-                    if (dot == true)
+                    if (dot == true && entry != ".")
                     {
                         lastTwo += 1;
                     }
@@ -61,7 +62,7 @@ namespace Multitaschenrechner
                             lblOutput.Content += ".";
                         }
                     }
-                    else if (lblOutput.Content.ToString() == "0")
+                    else if (lblOutput.Content.ToString() == "0" && entry != "")
                     {
                         lblOutput.Content = entry;
                     }
@@ -74,7 +75,15 @@ namespace Multitaschenrechner
                 {
                     string[] Baseparts = CBBaseCurrency.SelectedItem.ToString().Split(" - ");
                     string[] Trgtparts = CBTrgtCurrency.SelectedItem.ToString().Split(" - ");
-                    lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
+                    if (Baseparts[1] != Trgtparts[1])
+                    {
+                        // CultureInfo.InvariantCulture sagt dem code es soll den Punkt als Dezimaltrennzeichen verwenden vorher hat es das Punkt ignoriert
+                        lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDouble(lblOutput.Content, CultureInfo.InvariantCulture));
+                    }
+                    else
+                    {
+                        lblOutputTrgt.Content = lblOutput.Content;
+                    }
                 }
             }
         }
@@ -113,7 +122,15 @@ namespace Multitaschenrechner
                         {
                             string[] Baseparts = CBBaseCurrency.SelectedItem.ToString().Split(" - ");
                             string[] Trgtparts = CBTrgtCurrency.SelectedItem.ToString().Split(" - ");
-                            lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDecimal(lblOutput.Content));
+                            if (Baseparts[1] != Trgtparts[1])
+                            {
+                                // CultureInfo.InvariantCulture sagt dem code es soll den Punkt als Dezimaltrennzeichen verwenden vorher hat es das Punkt ignoriert
+                                lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDouble(lblOutput.Content, CultureInfo.InvariantCulture));
+                            }
+                            else
+                            {
+                                lblOutputTrgt.Content = lblOutput.Content;
+                            }
                         }
                     }
                 }

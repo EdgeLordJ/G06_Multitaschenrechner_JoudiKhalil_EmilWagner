@@ -100,12 +100,14 @@ namespace Multitaschenrechner
         {
             string[] parts = ComboBoxSrcCurrency.SelectedItem.ToString().Split(" - ");
             lblSrcCurrency.Content = parts[1];
+            currency.AddString("", lblSrcNum, lblTrgtNum, ComboBoxSrcCurrency, ComboBoxTrgtCurrency);
         }
 
         private void ComboBoxTrgtCurrency_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string[] parts = ComboBoxTrgtCurrency.SelectedItem.ToString().Split(" - ");
             lblTrgtCurrency.Content = parts[1];
+            currency.AddString("", lblSrcNum, lblTrgtNum, ComboBoxSrcCurrency, ComboBoxTrgtCurrency);
         }
     }
 }
