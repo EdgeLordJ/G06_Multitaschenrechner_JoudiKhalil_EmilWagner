@@ -35,5 +35,14 @@ namespace Multitaschenrechner
 
             comparison.DrawRects(CanvasDraw, parts[1]);
         }
+
+        private void CanvasDraw_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (CBSrcCurrency.SelectedItem != null)
+            {
+                string[] parts = CBSrcCurrency.SelectedItem.ToString().Split(" - ");
+                comparison.DrawRects(CanvasDraw, parts[1]);
+            }
+        }
     }
 }

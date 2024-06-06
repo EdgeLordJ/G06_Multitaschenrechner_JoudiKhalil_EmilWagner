@@ -14,15 +14,14 @@ namespace Multitaschenrechner
     public class CurrencyComparison
     {
         private HttpClient client = new HttpClient();
-        private CurrenciesCollection currencies = new CurrenciesCollection();
-        private Dictionary<string, double> CurrencyRates;
+        private Dictionary<string, double> CurrencyRates = new Dictionary<string, double>();
 
         public CurrencyComparison()
         {
 
         }
 
-        public async void GetData(string currency)
+        public async Task<Dictionary<string, double>> GetData(string currency)
         {
             CurrencyRates.Clear();
 
@@ -32,17 +31,21 @@ namespace Multitaschenrechner
 
             string responseBody = await response.Content.ReadAsStringAsync();
             JObject json = JObject.Parse(responseBody);
+            var rates = json["rates"] as JObject;
 
-            foreach (var item in json)
+            foreach (var item in rates)
             {
-                CurrencyRates.Add(json[item.Key].ToString(), (double)json[item.Value]);
+                CurrencyRates.Add(item.Key, (double)item.Value);
             }
+
+            return CurrencyRates;
         }
 
-        public void DrawRects(Canvas canvas, string currency)
+        public async void DrawRects(Canvas canvas, string currency)
         {
-            int distance = 10;
-            GetData(currency);
+            canvas.Children.Clear();
+            int distance = 7;
+            CurrencyRates = await GetData(currency);
 
             double maxRate = CurrencyRates.Values.Max();
 
@@ -50,21 +53,24 @@ namespace Multitaschenrechner
             {
                 Label label = new Label()
                 {
-                    Content = item.Key
+                    Content = item.Key,
+                    Background = Brushes.White,
+                    Height = 30,
+                    Width = 35
                 };
 
                 Rectangle rect = new Rectangle()
                 {
                     Width = 10,
-                    Height = ((canvas.ActualHeight-label.Height) / maxRate) * item.Value,
+                    Height = 200, //((canvas.ActualHeight-label.Height) / maxRate) * item.Value,
                     Fill = Brushes.Blue,
                 };
 
-                Canvas.SetTop(label, 10);
+                Canvas.SetTop(label, canvas.ActualHeight-35);
                 Canvas.SetLeft(label, distance);
 
-                Canvas.SetTop(rect, canvas.ActualHeight-rect.Height);
-                Canvas.SetLeft(rect, distance);
+                Canvas.SetTop(rect, canvas.ActualHeight-(rect.Height+50)); // canvas.ActualHeight-rect.Height
+                Canvas.SetLeft(rect, distance + (label.Width / 4)+2);
                 
                 canvas.Children.Add(label);
                 canvas.Children.Add(rect);

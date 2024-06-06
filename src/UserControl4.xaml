@@ -24,7 +24,7 @@
         </Grid.RowDefinitions>
         <ComboBox x:Name="CBSrcCurrency" Grid.Row="0" Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" SelectionChanged="CBSrcCurrency_SelectionChanged"/>
         <Label x:Name="lblInfo" Grid.Column="0" HorizontalAlignment="Right" Content="Die Basis ist 1 " FontSize="20" Foreground="White" Padding="10" VerticalAlignment="Center"/>
-        <Canvas x:Name="CanvasDraw" Background="LightCyan" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2">
+        <Canvas x:Name="CanvasDraw" Background="LightCyan" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" SizeChanged="CanvasDraw_SizeChanged">
             
         </Canvas>
     </Grid>
