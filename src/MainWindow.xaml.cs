@@ -46,5 +46,15 @@ namespace Multitaschenrechner
         {
             CC.Content = new UserControl4();
         }
+
+        private void rbtnLength_Checked(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new UserControlLengthCalculator();
+        }
+
+        private void rbtnSettings_Checked(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new UserControlSettings();
+        }
     }
 }
