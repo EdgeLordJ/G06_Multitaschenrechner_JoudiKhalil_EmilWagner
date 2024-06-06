@@ -1,9 +1,12 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using NCalc;
 
 namespace Multitaschenrechner
@@ -61,6 +64,31 @@ namespace Multitaschenrechner
                 this._scale = newScale;
             }
             this._graphList.DrawGraphene(CanvasCoordinateSystem, this._coordinateSystem, this._scale);
+        }
+
+        private void btnScreenshot_Click(object sender, RoutedEventArgs e)
+        {
+            RenderTargetBitmap renderBitmap = new RenderTargetBitmap((int)CanvasCoordinateSystem.ActualWidth, (int)CanvasCoordinateSystem.ActualHeight, 96d, 96d, PixelFormats.Pbgra32);
+
+            renderBitmap.Render(CanvasCoordinateSystem);
+
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "PNG-Bilder (*.png)|*.png|Alle Dateien (*.*)|*.*";
+            saveDialog.DefaultExt = ".png";
+            saveDialog.Title = "Screenshot speichern";
+            bool? result = saveDialog.ShowDialog();
+
+            if (result == true)
+            {
+                string filePath = saveDialog.FileName;
+                using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+            }
         }
 
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
@@ -269,5 +297,7 @@ namespace Multitaschenrechner
         {
             calc.AddString("^", lblOutput);
         }
+
+        
     }
 }

@@ -163,8 +163,9 @@
             
         </Grid>
         <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Panel.ZIndex="1">
-            <Button x:Name="btnZoomIn" Width="50" Height="30" Content="+"  Margin="0 0 0 10" Click="ZoomIn_Click" Style="{StaticResource NumberStyle}" />
-            <Button x:Name="btnZoomOut" Width="50" Height="30" Content="-"  Margin="20 0 20 10" Click="ZoomOut_Click" Style="{StaticResource NumberStyle}" />
+            <Button x:Name="btnZoomIn" Width="50" Height="30" Content="+"  Margin="0 0 0 7" Click="ZoomIn_Click" Style="{StaticResource NumberStyle}" />
+            <Button x:Name="btnZoomOut" Width="50" Height="30" Content="-"  Margin="0 0 0 7" Click="ZoomOut_Click" Style="{StaticResource NumberStyle}" />
+            <Button x:Name="btnScreenshot" Width="50" Height="30" Content="sc"  Margin="20 0 20 7"  Style="{StaticResource NumberStyle}" Click="btnScreenshot_Click" />
         </StackPanel>
 
         
