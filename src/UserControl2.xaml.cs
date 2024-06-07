@@ -37,6 +37,8 @@ namespace Multitaschenrechner
         string rect_name;
         string border_name;
 
+        private Border _previousSelectedBorder;
+
         public UserControl2()
         {
             InitializeComponent();
@@ -153,7 +155,23 @@ namespace Multitaschenrechner
             dynamicLabel = (Label)this.FindName(lbl_name);
             this.lblOutput = dynamicLabel;
 
-            
+            // Find the current border dynamically
+            string currentBorderName = $"border{output_label}";
+            Border currentBorder = (Border)this.FindName(currentBorderName);
+
+            // Reset the border color of the previously selected border, if any
+            if (_previousSelectedBorder != null)
+            {
+                _previousSelectedBorder.BorderBrush = new SolidColorBrush(Colors.White);
+            }
+
+            // Set the border color of the currently selected border
+            if (currentBorder != null)
+            {
+                currentBorder.BorderBrush = new SolidColorBrush(Colors.LightGreen);
+                _previousSelectedBorder = currentBorder;
+            }
+
             _currentGraph = _graphList.GetGraphByLabelName(lbl_name);
             _currentGraphIndex = Convert.ToInt32(output_label) - 1;
         }

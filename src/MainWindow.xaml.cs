@@ -56,5 +56,6 @@ namespace Multitaschenrechner
         {
             CC.Content = new UserControlSettings();
         }
+        
     }
 }

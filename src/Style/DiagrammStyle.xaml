@@ -31,7 +31,7 @@
     </Style>
 
     <Style TargetType="Border">
-        <Setter Property="BorderThickness" Value="0, 0.3, 0.3, 0.3" />
+        <Setter Property="BorderThickness" Value="0, 0.4, 0.4, 0.4" />
         <Setter Property="BorderBrush" Value="White" />
         <Setter Property="CornerRadius" Value="5" />
         <Setter Property="Grid.ColumnSpan" Value="2" />
