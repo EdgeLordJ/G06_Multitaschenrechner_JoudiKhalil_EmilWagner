@@ -43,6 +43,13 @@ namespace Multitaschenrechner
         {
             InitializeComponent();
             this.lblOutput = lbl1;
+
+            Border initialBorder = (Border)this.FindName("border1");
+            if (initialBorder != null)
+            {
+                initialBorder.BorderBrush = new SolidColorBrush(Colors.LightGreen);
+                _previousSelectedBorder = initialBorder;
+            }
         }
 
         private void KoordinatenCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
