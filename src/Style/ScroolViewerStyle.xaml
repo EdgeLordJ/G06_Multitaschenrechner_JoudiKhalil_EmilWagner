@@ -1,0 +1,73 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    
+    <Style x:Key="ScrollBarThumbStyle" TargetType="Thumb">
+        <Setter Property="Height" Value="10" />
+        <Setter Property="Width" Value="200" />
+        <Setter Property="Background" Value="Gray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Thumb">
+                    <Border CornerRadius="5" Background="{TemplateBinding Background}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+    <Style x:Key="ScrollBarButtonStyle" TargetType="RepeatButton">
+        <Setter Property="Width" Value="0" />
+        <Setter Property="Height" Value="0" />
+        <Setter Property="Opacity" Value="0" />
+    </Style>
+
+    
+    <Style TargetType="ScrollBar">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid>
+                        <Track Name="PART_Track" HorizontalAlignment="Stretch">
+                            <Track.DecreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.LineLeftCommand" Style="{StaticResource ScrollBarButtonStyle}" />
+                            </Track.DecreaseRepeatButton>
+                            <Track.IncreaseRepeatButton>
+                                <RepeatButton Command="ScrollBar.LineRightCommand" Style="{StaticResource ScrollBarButtonStyle}" />
+                            </Track.IncreaseRepeatButton>
+                            <Track.Thumb>
+                                <Thumb Style="{StaticResource ScrollBarThumbStyle}" />
+                            </Track.Thumb>
+                        </Track>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    
+    <Style TargetType="ScrollViewer" x:Key="CustomScrollViewerStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollViewer">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollContentPresenter Grid.Column="0" Grid.Row="0" />
+                        <ScrollBar Name="PART_HorizontalScrollBar"
+                                   Orientation="Horizontal"
+                                   Grid.Row="1"
+                                   HorizontalAlignment="Stretch"
+                                   Style="{StaticResource {x:Type ScrollBar}}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

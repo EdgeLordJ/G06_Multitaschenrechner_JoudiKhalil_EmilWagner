@@ -9,7 +9,8 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Style/TaschenrechnerStyle.xaml"/>
+                <ResourceDictionary Source="Style/ConverterSTyle.xaml"/>
+                <ResourceDictionary Source="Style/ScroolViewerStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -25,7 +26,7 @@
         <ComboBox x:Name="CBSrcCurrency" Grid.Row="0" Grid.Column="1" Width="400" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="20" SelectionChanged="CBSrcCurrency_SelectionChanged"/>
         <Label x:Name="lblInfo" Grid.Column="0" HorizontalAlignment="Right" Content="Die Basis ist 1 " FontSize="20" Foreground="White" Padding="10" VerticalAlignment="Center"/>
         <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
-            <Canvas x:Name="CanvasDraw" Background="LightCyan" SizeChanged="CanvasDraw_SizeChanged">
+            <Canvas x:Name="CanvasDraw" Background="#33383C" SizeChanged="CanvasDraw_SizeChanged">
 
             </Canvas>
         </ScrollViewer>

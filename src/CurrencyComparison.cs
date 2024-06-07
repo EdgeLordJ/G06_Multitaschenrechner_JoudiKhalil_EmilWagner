@@ -57,7 +57,10 @@ namespace Multitaschenrechner
                 Label label = new Label()
                 {
                     Content = item.Key,
-                    Background = Brushes.White,
+                    Background = Brushes.Transparent,
+                    Foreground = Brushes.White,
+                    HorizontalAlignment = System.Windows.HorizontalAlignment.Center,
+                    VerticalAlignment = System.Windows.VerticalAlignment.Center,
                     Height = 30,
                     Width = 35
                 };
@@ -76,7 +79,7 @@ namespace Multitaschenrechner
                 {
                     Width = 10,
                     Height = Math.Min(Math.Abs(((canvas.ActualHeight-label.Height) / Math.Log10(maxRate) * logRate)), canvas.ActualHeight - label.Height - 30),
-                    Fill = Brushes.Blue,
+                    Fill = Brushes.LightBlue,
                 };
 
                 Canvas.SetTop(label, canvas.ActualHeight-35);

@@ -92,13 +92,14 @@ namespace Multitaschenrechner
                         Content = (countX).ToString(), // Zahlenbeschriftung für jede 10. Zeile
                         Foreground = Brushes.Black
                     };
-                    Canvas.SetLeft(xGridLabel, i - 5); // Positionierung der Beschriftung
-                    Canvas.SetTop(xGridLabel, centerY + 5); // Positionierung der Beschriftung
+                    Canvas.SetLeft(xGridLabel, i - 15); // Positionierung der Beschriftung
+                    Canvas.SetTop(xGridLabel, centerY + 2); // Positionierung der Beschriftung
                     canvas.Children.Add(xGridLabel);
                 }
             }
 
-            for (int i = (int)centerX, countX = 0; i > 0; i -= this._scale, countX++)
+            
+            for (int i = (int)centerX, countX = -1; i > 0; i -= this._scale, countX--)
             {
                 Line gridLine = new Line
                 {
@@ -111,45 +112,20 @@ namespace Multitaschenrechner
                 };
                 canvas.Children.Add(gridLine);
 
-                if (countX % 10 == 0) // Jede 10. Zeile auf der X-Achse beschriften
+                if (countX % 10 == 0) // Jede 10. Zeile auf der negativen X-Achse beschriften
                 {
                     Label xGridLabel = new Label
                     {
-                        Content = (countX ).ToString(), // Zahlenbeschriftung für jede 10. Zeile
+                        Content = "-" + (countX * -1).ToString(), // Zahlenbeschriftung für jede 10. Zeile mit Minuszeichen
                         Foreground = Brushes.Black
                     };
-                    Canvas.SetLeft(xGridLabel, i - 5); // Positionierung der Beschriftung
+                    Canvas.SetLeft(xGridLabel, i - 35); // Positionierung der Beschriftung
                     Canvas.SetTop(xGridLabel, centerY + 5); // Positionierung der Beschriftung
                     canvas.Children.Add(xGridLabel);
                 }
             }
 
-            for (int i = (int)centerY, countY = 0; i < coordinateHeight; i += this._scale, countY++)
-            {
-                Line gridLine = new Line
-                {
-                    X1 = 0,
-                    Y1 = i,
-                    X2 = coordinateWidth,
-                    Y2 = i,
-                    Stroke = Brushes.LightGray,
-                    StrokeThickness = 0.5
-                };
-                canvas.Children.Add(gridLine);
-
-                if (countY % 10 == 0) // Jede 10. Zeile auf der Y-Achse beschriften
-                {
-                    Label yGridLabel = new Label
-                    {
-                        Content = (countY).ToString(), // Zahlenbeschriftung für jede 10. Zeile
-                        Foreground = Brushes.Black
-                    };
-                    Canvas.SetLeft(yGridLabel, centerX - 20); // Positionierung der Beschriftung
-                    Canvas.SetTop(yGridLabel, i - 12); // Positionierung der Beschriftung
-                    canvas.Children.Add(yGridLabel);
-                }
-            }
-
+            // Beschriftung der positiven Y-Achse (oben)
             for (int i = (int)centerY, countY = 0; i > 0; i -= this._scale, countY++)
             {
                 Line gridLine = new Line
@@ -163,21 +139,51 @@ namespace Multitaschenrechner
                 };
                 canvas.Children.Add(gridLine);
 
-                if (countY % 10 == 0) // Jede 10. Zeile auf der Y-Achse beschriften
+                if (countY % 10 == 0) // Jede 10. Zeile auf der positiven Y-Achse beschriften
                 {
                     Label yGridLabel = new Label
                     {
-                        Content = (countY ).ToString(), // Zahlenbeschriftung für jede 10. Zeile
+                        Content = (countY).ToString(), // Zahlenbeschriftung für jede 10. Zeile
                         Foreground = Brushes.Black
                     };
                     Canvas.SetLeft(yGridLabel, centerX - 20); // Positionierung der Beschriftung
-                    Canvas.SetTop(yGridLabel, i - 12); // Positionierung der Beschriftung
+                    Canvas.SetTop(yGridLabel, i - 17); // Positionierung der Beschriftung
                     canvas.Children.Add(yGridLabel);
                 }
             }
+
+            // Beschriftung der negativen Y-Achse (unten)
+            for (int i = (int)centerY, countY = -1; i < coordinateHeight; i += this._scale, countY--)
+            {
+                Line gridLine = new Line
+                {
+                    X1 = 0,
+                    Y1 = i,
+                    X2 = coordinateWidth,
+                    Y2 = i,
+                    Stroke = Brushes.LightGray,
+                    StrokeThickness = 0.5
+                };
+                canvas.Children.Add(gridLine);
+
+                if (countY % 10 == 0) // Jede 10. Zeile auf der negativen Y-Achse beschriften
+                {
+                    Label yGridLabel = new Label
+                    {
+                        Content = (countY).ToString(), // Zahlenbeschriftung für jede 10. Zeile
+                        Foreground = Brushes.Black
+                    };
+                    Canvas.SetLeft(yGridLabel, centerX - 24); // Positionierung der Beschriftung
+                    Canvas.SetTop(yGridLabel, i ); // Positionierung der Beschriftung
+                    canvas.Children.Add(yGridLabel);
+                }
+            }
+
+
+
         }
 
-        
+
 
         public void ZoomIn(Canvas canvas)
         {
