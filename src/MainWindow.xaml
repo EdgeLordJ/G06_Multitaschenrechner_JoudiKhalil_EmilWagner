@@ -49,7 +49,7 @@
                 </RadioButton>
                 <RadioButton x:Name="rbtnGraph" Margin="10" GroupName="GroupMenu" Checked="rbtnGraph_Checked">
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Source="Images/Diagramm_img.png" Width="20" Margin="0, 0,10 , 0"/>
                         <TextBlock Text="Diagramm" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
@@ -57,14 +57,14 @@
                 
                 <RadioButton x:Name="rbtnCurrency" Margin="10" GroupName="GroupMenu" Checked="rbtnCurrency_Checked">
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Source="Images/Currency_img.png"  Width="20" Margin="0, 0,10 , 0"/>
                         <TextBlock Text="Währungsrechner" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
 
                 <RadioButton x:Name="rbtnLength" Margin="10" GroupName="GroupMenu" Checked="rbtnLength_Checked">
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Source="Images/Ruler_img.png"  Width="20" Margin="0, 0,10 , 0"/>
                         <TextBlock Text="Längenrechner" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
@@ -72,7 +72,7 @@
                 <Label Content="Statistik" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Foreground="Gray" Margin="5 10 0 0"/>
                 <RadioButton x:Name="rbtnCurrencyComparison" Margin="10" GroupName="GroupMenu" Checked="rbtnCurrencyComparison_Checked">
                     <StackPanel Orientation="Horizontal">
-                        <Image />
+                        <Image Source="Images/Comparison.png"  Width="20" Margin="0, 0,10 , 0"/>
                         <TextBlock Text="Währungsvergleich" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
