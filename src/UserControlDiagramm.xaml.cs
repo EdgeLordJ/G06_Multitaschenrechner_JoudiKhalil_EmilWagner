@@ -62,6 +62,8 @@ namespace Multitaschenrechner
             this._coordinateSystem.ZoomIn(CanvasCoordinateSystem);
             this._scale += this._scaleStep;
             this._graphList.DrawGraphene(CanvasCoordinateSystem, this._coordinateSystem, this._scale);
+
+            Logging.logger.Information("Es wurde reingezoomed");
         }
 
         private void ZoomOut_Click(object sender, RoutedEventArgs e)
@@ -73,6 +75,7 @@ namespace Multitaschenrechner
                 this._scale = newScale;
             }
             this._graphList.DrawGraphene(CanvasCoordinateSystem, this._coordinateSystem, this._scale);
+            Logging.logger.Information("Es wurde raußgezoomed");
         }
 
         private void btnScreenshot_Click(object sender, RoutedEventArgs e)
@@ -98,6 +101,8 @@ namespace Multitaschenrechner
                     encoder.Save(fileStream);
                 }
             }
+
+            Logging.logger.Information("Es wurde ein Screenshot gemacht");
         }
 
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
@@ -113,6 +118,7 @@ namespace Multitaschenrechner
                 if (this._graphList.GetList().Count == 9)
                 {
                     BtnEnter.IsEnabled = false;
+                    Logging.logger.Information("Limit an Graphen erreicht");
                     return;
                 }
 
@@ -141,7 +147,7 @@ namespace Multitaschenrechner
 
                 _graphList.Add(new Graph(Convert.ToString(lblOutput.Content)));
 
-                // Neuzeichnen aller Graphen
+                
                 CanvasCoordinateSystem.Children.Clear();
                 _coordinateSystem.DrawCoordinateSystem(CanvasCoordinateSystem);
                 _graphList.DrawGraphene(CanvasCoordinateSystem, _coordinateSystem, _scale);
@@ -162,17 +168,17 @@ namespace Multitaschenrechner
             dynamicLabel = (Label)this.FindName(lbl_name);
             this.lblOutput = dynamicLabel;
 
-            // Find the current border dynamically
+            
             string currentBorderName = $"border{output_label}";
             Border currentBorder = (Border)this.FindName(currentBorderName);
 
-            // Reset the border color of the previously selected border, if any
+            
             if (_previousSelectedBorder != null)
             {
                 _previousSelectedBorder.BorderBrush = new SolidColorBrush(Colors.White);
             }
 
-            // Set the border color of the currently selected border
+            
             if (currentBorder != null)
             {
                 currentBorder.BorderBrush = new SolidColorBrush(Colors.LightGreen);

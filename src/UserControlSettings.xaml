@@ -6,7 +6,34 @@
              xmlns:local="clr-namespace:Multitaschenrechner"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="#1C1F21">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Label Content="Emil Wagner" Foreground="White"/>
+            <Label Content="E-mail:       emil.wagner@student.htl-rankweil.at" Foreground="White"/>
+            <Label Content="Snapchat:  emil_wagner19" Foreground="White"/>
+        </StackPanel>
+
+        <Label Grid.Row="1" Content="@Powered by ChatGPT" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="8"/>
+
+        <Border BorderThickness="0.7 0 0 0" BorderBrush="White" Grid.Column="1" Grid.RowSpan="2"/>
+
+
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <Label Content="Joudi Khalil aka Gaul" Foreground="White"/>
+            <Label Content="E-mail:       joudi.khalil@student.htl-rankweil.at" Foreground="White"/>
+            <Label Content="Snapchat:  joudi_khali9410" Foreground="White"/>
+        </StackPanel>
+
+        <Label Grid.Row="1" Grid.Column="1" Content="@Powered by Copilot" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="8"/>
     </Grid>
 </UserControl>

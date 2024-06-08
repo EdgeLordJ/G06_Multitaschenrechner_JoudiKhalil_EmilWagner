@@ -44,7 +44,7 @@ namespace Multitaschenrechner
                     lblOutput.Content += entry;
                 }
 
-                // Update the output after adding a string
+                
                 UpdateOutput(lblOutput, lblOutputTrgt, CBBaseLength, CBTrgtLength);
             }
         }
@@ -75,7 +75,7 @@ namespace Multitaschenrechner
                     }
                 }
 
-                // Update the output after removing a string
+                
                 UpdateOutput(lblOutput, lblOutputTrgt, CBBaseLength, CBTrgtLength);
             }
         }
@@ -99,6 +99,10 @@ namespace Multitaschenrechner
                     double result = LengthDic.Convert(value, fromUnit, toUnit);
                     lblOutputTrgt.Content = result.ToString(System.Globalization.CultureInfo.InvariantCulture);
                 }
+            }
+            else
+            {
+                Logging.logger.Information("Es wurde nichts ausgewählt zum umwandeln");
             }
         }
     }

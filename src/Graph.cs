@@ -47,11 +47,13 @@ namespace Multitaschenrechner
                     return Convert.ToDouble(result);
                 };
 
+                Logging.logger.Information("Funktion wurde erfolgreich berechnet/umgewandelt");
                 return function;
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException("Error converting function string to Func<double, double>: " + ex.Message);
+                Logging.logger.Error("Eine Funktion konnte nicht umgewandelt werden.");
+                throw new InvalidOperationException("Funktion konnte nicht umgewandelt werden" );
             }
         }
 
@@ -78,7 +80,8 @@ namespace Multitaschenrechner
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException("Error converting root expressions: " + ex.Message);
+                Logging.logger.Error("Eine Wurzel konnte nicht aufgelöst werden");
+                throw new InvalidOperationException("Wurzel konnte nicht aufgelöst werden" + ex.Message);
             }
         }
 
@@ -100,7 +103,8 @@ namespace Multitaschenrechner
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException("Error converting power expressions: " + ex.Message);
+                Logging.logger.Error("Eine Hochzahl konnte nicht aufgelöst werden");
+                throw new InvalidOperationException("Hochzahl konnte nicht verarbeitet werden " + ex.Message);
             }
         }
 
@@ -132,7 +136,7 @@ namespace Multitaschenrechner
                     }
                     catch
                     {
-                        continue; // Skip if function evaluation throws an error
+                        continue; 
                     }
 
                     double canvasY = centerY - y * scale;
@@ -143,10 +147,12 @@ namespace Multitaschenrechner
                 }
 
                 canvas.Children.Add(graph);
+                Logging.logger.Information("Graph gezeichnet");
             }
             catch (Exception ex)
             {
-                throw new InvalidOperationException("Error drawing graph: " + ex.Message);
+                Logging.logger.Error("Graph konnte nicht gezeichnet werden");
+                throw new InvalidOperationException("Graph kann nicht gezeichnet werden" + ex.Message);
             }
         }
     }

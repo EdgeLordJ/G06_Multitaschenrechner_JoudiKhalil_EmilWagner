@@ -26,9 +26,15 @@ namespace Multitaschenrechner
             {
                 double fromFactor = _lengthDic[fromUnit];
                 double toFactor = _lengthDic[toUnit];
-                return value * fromFactor / toFactor;
+                double result = value * fromFactor / toFactor;
+
+                
+                result = Math.Round(result, 12);
+
+                return result;
             }
-            throw new ArgumentException("Invalid units.");
+            Logging.logger.Error("Es wurde eine Einheit gewählt die es nicht gibt");
+            throw new ArgumentException("Ungültige Einheit");
         }
     }
 }

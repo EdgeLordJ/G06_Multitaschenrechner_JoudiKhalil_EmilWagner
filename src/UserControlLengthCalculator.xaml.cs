@@ -98,6 +98,7 @@ namespace Multitaschenrechner
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this._length.UpdateOutput(lblSrcNum, lblTrgtNum, ComboBoxSrcLength, ComboBoxTrgtLength);
+            Logging.logger.Information("Es wurde eine andere Länge ausgewählt");
         }
     }
 }

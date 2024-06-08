@@ -40,6 +40,10 @@ namespace Multitaschenrechner
                 this._grapheneList.Add(graph);
                 this._usedBrushes.Add(graph.Color);
             }
+            else
+            {
+                Logging.logger.Information("Limit an Graphen erreicht");
+            }
         }
 
         public Graph GetGraphByLabelName(string labelName)
@@ -52,22 +56,6 @@ namespace Multitaschenrechner
             return null;
         }
 
-        public void RemoveAt(int index)
-        {
-            if (index >= 0 && index < this._grapheneList.Count)
-            {
-                this._grapheneList.RemoveAt(index);
-            }
-        }
-
-        public void Insert(int index, Graph graph)
-        {
-            if (index >= 0 && index <= this._grapheneList.Count)
-            {
-                this._grapheneList.Insert(index, graph);
-            }
-        }
-
         public void DrawGraphene(Canvas canvas, CoordinateSystem coordinateSystem, int scale)
         {
             canvas.Children.Clear();  
@@ -78,6 +66,10 @@ namespace Multitaschenrechner
                 if (graph.Function != null)
                 {
                     graph.DrawGraph(canvas, scale);  
+                }
+                else
+                {
+                    Logging.logger.Information("Ein Graph = null");
                 }
             }
         }
