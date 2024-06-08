@@ -11,7 +11,9 @@
     <None Remove="Images\Comparison.png" />
     <None Remove="Images\Currency_img.png" />
     <None Remove="Images\Diagramm_img.png" />
+    <None Remove="Images\Emil_img.jpeg" />
     <None Remove="Images\img_Einstellungen.png" />
+    <None Remove="Images\Joudi_img.jpeg" />
     <None Remove="Images\Ruler_img.png" />
     <None Remove="Images\sidebar.svg" />
     <None Remove="Images\Taschenrechner.png" />
@@ -28,7 +30,13 @@
     <Content Include="Images\Diagramm_img.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Images\Emil_img.jpeg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Images\img_Einstellungen.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\Joudi_img.jpeg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\Ruler_img.png">

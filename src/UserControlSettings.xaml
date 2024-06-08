@@ -14,10 +14,10 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="200" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
             <Label Content="Emil Wagner" Foreground="White"/>
             <Label Content="E-mail:       emil.wagner@student.htl-rankweil.at" Foreground="White"/>
             <Label Content="Snapchat:  emil_wagner19" Foreground="White"/>
@@ -28,12 +28,15 @@
         <Border BorderThickness="0.7 0 0 0" BorderBrush="White" Grid.Column="1" Grid.RowSpan="2"/>
 
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
             <Label Content="Joudi Khalil aka Gaul" Foreground="White"/>
             <Label Content="E-mail:       joudi.khalil@student.htl-rankweil.at" Foreground="White"/>
             <Label Content="Snapchat:  joudi_khali9410" Foreground="White"/>
         </StackPanel>
 
         <Label Grid.Row="1" Grid.Column="1" Content="@Powered by Copilot" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="8"/>
+
+        <Image Source="Images/Emil_img.jpeg" Margin="10"/>
+        <Image Source="Images/Joudi_img.jpeg" Grid.Column="1" Margin="10"/>
     </Grid>
 </UserControl>
