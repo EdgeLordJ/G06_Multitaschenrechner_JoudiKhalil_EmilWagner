@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
-            <Label Content="Emil Wagner" Foreground="White"/>
+            <Label Content="Emil Wagner aka EdgeLordE" Foreground="White"/>
             <Label Content="E-mail:       emil.wagner@student.htl-rankweil.at" Foreground="White"/>
             <Label Content="Snapchat:  emil_wagner19" Foreground="White"/>
         </StackPanel>

@@ -71,8 +71,15 @@
 
                 <RadioButton x:Name="rbtnTemperature" Margin="10" GroupName="GroupMenu" Checked="rbtnTemperature_Checked">
                     <StackPanel Orientation="Horizontal">
-                        <!--<Image Source=""  Width="20" Margin="0, 0,10 , 0"/>-->
-                        <TextBlock Text="Temperatur Umrechner" VerticalAlignment="Center"/>
+                        <Image Source="Images/Thermometer_img.png"  Width="20" Margin="0, 0,10 , 0"/>
+                        <TextBlock Text="Temperaturrechner" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton x:Name="rbtnAngle" Margin="10" GroupName="GroupMenu" Checked="rbtnAngle_Checked">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Images/Angle_img.png"  Width="20" Margin="0, 0,10 , 0"/>
+                        <TextBlock Text="Winkelrechner" VerticalAlignment="Center"/>
                     </StackPanel>
                 </RadioButton>
 

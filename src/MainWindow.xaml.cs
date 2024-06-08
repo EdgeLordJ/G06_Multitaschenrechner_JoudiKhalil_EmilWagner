@@ -61,5 +61,10 @@ namespace Multitaschenrechner
         {
             CC.Content = new UserControlTemperatureConverter();
         }
+
+        private void rbtnAngle_Checked(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new UserControlAngleConverter();
+        }
     }
 }
