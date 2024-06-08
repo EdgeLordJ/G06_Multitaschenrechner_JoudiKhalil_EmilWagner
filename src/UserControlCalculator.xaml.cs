@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,10 +28,6 @@ namespace Multitaschenrechner
         public UserControl1()
         {
             InitializeComponent();
-
-            // Zum Testen
-            //NCalc.Expression expr = new NCalc.Expression("Pow(2,2)");
-            //Debug.WriteLine(Convert.ToDouble(expr.Evaluate())); // Für alle Funktionalitäten Paket "NCalc" installieren
         }
 
         private void Btn0_Click(object sender, RoutedEventArgs e)
@@ -115,8 +112,10 @@ namespace Multitaschenrechner
             calc.Ergebnis = result;
             calcList.Add(calc);
             calc = new NormalCalc();
+            calc.UpdateVariables(result);
             calcList.UpdateListBox(ListBoxOutput, lblOutput);
             lblOutput.Content = result;
+            Logging.logger.Information("Eine Rechnung wurde eingegeben und berechnet");
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
@@ -126,7 +125,7 @@ namespace Multitaschenrechner
 
         private void BtnPoint_Click(object sender, RoutedEventArgs e)
         {
-            calc.AddString(".", lblOutput);
+            calc.AddString(",", lblOutput);
         }
 
         private void BtnPowerTwo_Click(object sender, RoutedEventArgs e)
@@ -177,7 +176,7 @@ namespace Multitaschenrechner
         {
             SaveFileDialog ofd = new SaveFileDialog()
             {
-                Title = "Save your Calculation History",
+                Title = "Speichern Sie Ihren Rechnungsverlauf",
                 Filter = "CSV Files (*.csv, *.txt)|*.csv;*.txt|All Files (*.*)|*.*"
             };
 
@@ -186,13 +185,14 @@ namespace Multitaschenrechner
                 string filename = ofd.FileName;
                 calcList.Save(filename);
             }
+            Logging.logger.Information("Rechnungsverlauf wurde gespeichert");
         }
 
         private void BtnLaden_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog()
             {
-                Title = "Open a Calculation History",
+                Title = "Öffnen Sie ihren Rechnungsverlauf",
                 Filter = "CSV Files (*.csv, *.txt)|*.csv;*.txt|All Files (*.*)|*.*"
             };
 
@@ -202,6 +202,7 @@ namespace Multitaschenrechner
                 calcList.Load(filename);
                 calcList.UpdateListBox(ListBoxOutput, lblOutput);
             }
+            Logging.logger.Information("Rechnungsverlauf wurde geladen");
         }
     }
 }

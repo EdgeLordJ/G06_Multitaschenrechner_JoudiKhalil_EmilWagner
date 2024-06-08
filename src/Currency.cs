@@ -33,6 +33,7 @@ namespace Multitaschenrechner
 
         public async Task<double> ConvertCurrency(string baseCurrency, string targetCurrency, double amount)
         {
+            Logging.logger.Information($"Währung {baseCurrency} wird in {targetCurrency} umgerechnet");
             string apiUrl = $"https://api.frankfurter.app/latest?from={baseCurrency};to={targetCurrency}";
             HttpResponseMessage response = await client.GetAsync(apiUrl);
             response.EnsureSuccessStatusCode();
@@ -46,6 +47,7 @@ namespace Multitaschenrechner
 
         public async void AddString(string entry, Label lblOutput, Label lblOutputTrgt, ComboBox CBBaseCurrency, ComboBox CBTrgtCurrency)
         {
+            Logging.logger.Information("Eintrag wird hinzugefügt; Währungsrechner");
             if (CBBaseCurrency.SelectedItem != null && CBTrgtCurrency.SelectedItem != null)
             {
                 if (lastTwo < 2)
@@ -79,10 +81,13 @@ namespace Multitaschenrechner
                     {
                         // CultureInfo.InvariantCulture sagt dem code es soll den Punkt als Dezimaltrennzeichen verwenden vorher hat es das Punkt ignoriert
                         lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDouble(lblOutput.Content, CultureInfo.InvariantCulture));
+                        Logging.logger.Information("Punkt wird als Dezimaltrennzeichen verwendet für die Umrechnung");
+                        Logging.logger.Information("Währung umgerechnet von " + Baseparts[1] + " zu " + Trgtparts[1]);
                     }
                     else
                     {
                         lblOutputTrgt.Content = lblOutput.Content;
+                        Logging.logger.Information("Währung ist gleich");
                     }
                 }
             }
@@ -90,6 +95,7 @@ namespace Multitaschenrechner
 
         public async void RemoveString(Label lblOutput, Label lblOutputTrgt, ComboBox CBBaseCurrency, ComboBox CBTrgtCurrency)
         {
+            Logging.logger.Information("Letzter Eintrag wird gelöscht; Währungsrechner");
             if (lblOutput.Content.ToString().Length > 0)
             {
                 if (lblOutput.Content.ToString() == "")
@@ -126,10 +132,13 @@ namespace Multitaschenrechner
                             {
                                 // CultureInfo.InvariantCulture sagt dem code es soll den Punkt als Dezimaltrennzeichen verwenden vorher hat es das Punkt ignoriert
                                 lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDouble(lblOutput.Content, CultureInfo.InvariantCulture));
+                                Logging.logger.Information("Punkt wird als Dezimaltrennzeichen verwendet für die Umrechnung");
+                                Logging.logger.Information("Währung umgerechnet von " + Baseparts[1] + " zu " + Trgtparts[1]);
                             }
                             else
                             {
                                 lblOutputTrgt.Content = lblOutput.Content;
+                                Logging.logger.Information("Währung ist gleich");
                             }
                         }
                     }
@@ -139,6 +148,7 @@ namespace Multitaschenrechner
 
         public void Clear(Label lblInput, Label lblOutput)
         {
+            Logging.logger.Information("Eingabe und Ausgabe wird gelöscht; Währungsrechner");
             lblInput.Content = "0";
             lblOutput.Content = "0";
             dot = false;

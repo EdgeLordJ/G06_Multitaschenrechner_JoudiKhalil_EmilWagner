@@ -69,6 +69,13 @@
                     </StackPanel>
                 </RadioButton>
 
+                <RadioButton x:Name="rbtnTemperature" Margin="10" GroupName="GroupMenu" Checked="rbtnTemperature_Checked">
+                    <StackPanel Orientation="Horizontal">
+                        <!--<Image Source=""  Width="20" Margin="0, 0,10 , 0"/>-->
+                        <TextBlock Text="Temperatur Umrechner" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </RadioButton>
+
                 <Label Content="Statistik" VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="15" Foreground="Gray" Margin="5 10 0 0"/>
                 <RadioButton x:Name="rbtnCurrencyComparison" Margin="10" GroupName="GroupMenu" Checked="rbtnCurrencyComparison_Checked">
                     <StackPanel Orientation="Horizontal">

@@ -27,6 +27,7 @@ namespace Multitaschenrechner
             InitializeComponent();
 
             currencies.GetCurrencies(CBSrcCurrency);
+            Logging.logger.Information("Währungen wurden in die ComboBox geladen; Währungsvergleich");
         }
 
         private void CBSrcCurrency_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -34,6 +35,7 @@ namespace Multitaschenrechner
             string[] parts = CBSrcCurrency.SelectedItem.ToString().Split(" - ");
 
             comparison.DrawRects(CanvasDraw, parts[1]);
+            Logging.logger.Information("Währung wurde ausgewählt und Rechtecke wurden gezeichnet");
         }
 
         private void CanvasDraw_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -43,6 +45,7 @@ namespace Multitaschenrechner
                 string[] parts = CBSrcCurrency.SelectedItem.ToString().Split(" - ");
                 comparison.DrawRects(CanvasDraw, parts[1]);
             }
+            Logging.logger.Information("Canvas Größe wurde verändert und Rechtecke wurden neu gezeichnet");
         }
     }
 }

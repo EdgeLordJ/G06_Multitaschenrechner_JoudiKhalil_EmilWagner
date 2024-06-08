@@ -23,6 +23,7 @@ namespace Multitaschenrechner
 
         public async Task<Dictionary<string, double>> GetData(string currency)
         {
+            Logging.logger.Information("Währungsraten von einer Währung werden von API geladen und in eine Dictionary hinzugefügt");
             CurrencyRates.Clear();
 
             string apiUrl = $"https://api.frankfurter.app/latest?from={currency}";
@@ -43,6 +44,7 @@ namespace Multitaschenrechner
 
         public async void DrawRects(Canvas canvas, string currency)
         {
+            Logging.logger.Information("Balkendiagramm wird erstellt");
             canvas.Children.Clear();
             int distance = 7;
             CurrencyRates = await GetData(currency);
