@@ -12,3 +12,4 @@
 | 04.06. | Währungsrechner fertiggestellt Logging fehlt                                                                          |
 | 05.06. | Währungsvergleich angefangen und 3/4 fertig richtige Balken vom Diagramm fehlen                                       |
 | 06.06. | Dezimalstelle Bug behoben bei Währungsrechner und Funktionalitäten verbessert; Währungsvergleich fertig fehlt Logging |
+| 08.06. | Logging bei Währungsrechner, Währungsvergleich, und Taschenrechner gemacht; Taschenrechner Bugs behandelt             |

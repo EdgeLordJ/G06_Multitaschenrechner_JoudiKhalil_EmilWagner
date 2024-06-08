@@ -21,11 +21,13 @@ namespace Multitaschenrechner
 
         public void Add(Currency currency)
         {
+            Logging.logger.Information("Währung wurde zur Liste hinzugefügt");
             currencies.Add(currency);
         }
 
         public async void GetCurrencies(ComboBox CB)
         {
+            Logging.logger.Information("Währungen werden von API geladen und in eine ComboBox hinzugefügt");
             currencies.Clear();
             string apiUrl = $"https://api.frankfurter.app/currencies";
             HttpResponseMessage response = await client.GetAsync(apiUrl);

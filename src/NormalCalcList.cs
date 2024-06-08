@@ -18,7 +18,7 @@ namespace Multitaschenrechner
         {
             if (calc.Rechnung != "0")
             {
-                Logging.logger.Information("Rechnung wurde hinzugefügt:" , calc.Rechnung, "=", calc.Ergebnis);
+                Logging.logger.Information("Rechnung wurde zur Liste hinzugefügt:" , calc.Rechnung, "=", calc.Ergebnis);
                 calcs.Add(calc);
             }
         }
@@ -44,6 +44,7 @@ namespace Multitaschenrechner
                     stream.WriteLine(serialized);
                 }
             }
+            Logging.logger.Information($"Rechnungsverlauf wurde in {filename} geschrieben");
         }
 
         public void Load(string filename)
@@ -77,12 +78,14 @@ namespace Multitaschenrechner
                 Logging.logger.Error("Datei konnte nicht gelesen werden: {filename}", filename);
                 MessageBox.Show($"Datei konnte nicht gelesen werden: {filename}");
             }
+            Logging.logger.Information($"Rechnungsverlauf wurde aus {filename} gelesen");
         }
 
         public void SetLastCalc(string str, Label lbl, NormalCalc calc)
         {
             calc.LastEntry = str.Last().ToString();
             lbl.Content = str;
+            Logging.logger.Information("Rechnung wurde von ListBox in Inputfeld überschrieben");
         }
     }
 }

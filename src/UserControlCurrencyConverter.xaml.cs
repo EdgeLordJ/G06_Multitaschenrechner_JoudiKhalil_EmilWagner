@@ -29,6 +29,7 @@ namespace Multitaschenrechner
 
             currencies.GetCurrencies(ComboBoxSrcCurrency);
             currencies.GetCurrencies(ComboBoxTrgtCurrency);
+            Logging.logger.Information("Währungen wurden in die ComboBoxen geladen; Währungsrechner");
         }
 
         private void BtnClear_Click(object sender, RoutedEventArgs e)
@@ -101,6 +102,7 @@ namespace Multitaschenrechner
             string[] parts = ComboBoxSrcCurrency.SelectedItem.ToString().Split(" - ");
             lblSrcCurrency.Content = parts[1];
             currency.AddString("", lblSrcNum, lblTrgtNum, ComboBoxSrcCurrency, ComboBoxTrgtCurrency);
+            Logging.logger.Information("Basis Währung wurde geändert");
         }
 
         private void ComboBoxTrgtCurrency_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -108,6 +110,7 @@ namespace Multitaschenrechner
             string[] parts = ComboBoxTrgtCurrency.SelectedItem.ToString().Split(" - ");
             lblTrgtCurrency.Content = parts[1];
             currency.AddString("", lblSrcNum, lblTrgtNum, ComboBoxSrcCurrency, ComboBoxTrgtCurrency);
+            Logging.logger.Information("Ziel Währung wurde geändert");
         }
     }
 }

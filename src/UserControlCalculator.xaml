@@ -68,7 +68,7 @@
         <Button x:Name="BtnPlus" Grid.Row="5" Grid.Column="3" Content="+" Style="{StaticResource NumberStyle}" Click="BtnPlus_Click"/>
         <Button x:Name="BtnNegativ" Grid.Row="6" Grid.Column="0" Content="-x" Style="{StaticResource NumberStyle}" Click="BtnNegativ_Click"/>
         <Button x:Name="Btn0" Grid.Row="6" Grid.Column="1" Content="0" Style="{StaticResource NumberStyle}" Click="Btn0_Click"/>
-        <Button x:Name="BtnPoint" Grid.Row="6" Grid.Column="2" Content="." Style="{StaticResource NumberStyle}" Click="BtnPoint_Click"/>
+        <Button x:Name="BtnPoint" Grid.Row="6" Grid.Column="2" Content="," Style="{StaticResource NumberStyle}" Click="BtnPoint_Click"/>
         <Button x:Name="BtnEquals" Grid.Row="6" Grid.Column="3" Content="=" IsDefault="True" Style="{StaticResource Equalstyle}" Click="BtnEquals_Click"/>
         <Grid Grid.Row="6" Grid.Column="4">
             <Grid.ColumnDefinitions>

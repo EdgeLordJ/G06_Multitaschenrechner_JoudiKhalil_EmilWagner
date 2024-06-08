@@ -14,11 +14,12 @@ namespace Multitaschenrechner
     {
         private string lastEntry = "+";
         private bool dot = false;
-        private string lastNums = "";
+        private string lastNums = "0";
 
         public string LastEntry { get { return lastEntry; } set { lastEntry = value; } }
         public string Rechnung { get; set; }
         public string Ergebnis { get; set; }
+        public string LastNums { get { return lastNums; } set { lastNums = value; } }
 
         public NormalCalc()
         {
@@ -34,60 +35,64 @@ namespace Multitaschenrechner
 
         public void Squared(Label lblOutput)
         {
-            if (lblOutput.Content.ToString().Length > 0 && lastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(lastNums, out double nums))
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
             {
-                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
                 lblOutput.Content += $"{nums * nums}";
-                lastNums = $"{nums * nums}";
+                LastNums = $"{nums * nums}";
                 Logging.logger.Information("Zahl wurde quadriert:", nums);
             }
         }
 
         public void OneDividedBy(Label lblOutput)
         {
-            if (lblOutput.Content.ToString().Length > 0 && lastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(lastNums, out double nums))
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
             {
-                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
                 lblOutput.Content += $"{1 / nums}";
-                lastNums = $"{1 / nums}";
+                LastNums = $"{1 / nums}";
                 Logging.logger.Information("1 wurde durch Zahl geteilt:", nums);
             }
         }
 
         public void Negate(Label lblOutput)
         {
-            if (lblOutput.Content.ToString().Length > 0 && lastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(lastNums, out double nums))
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
             {
-                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
                 lblOutput.Content += $"{-nums}";
-                lastNums = $"{-nums}";
+                LastNums = $"{-nums}";
                 Logging.logger.Information("Zahl wurde negiert:", nums);
             }
         }
 
         public void Percent(Label lblOutput)
         {
-            if (lblOutput.Content.ToString().Length > 0 && lastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(lastNums, out double nums))
+            if (lblOutput.Content.ToString().Length > 0 && LastNums.Length <= lblOutput.Content.ToString().Length && Double.TryParse(LastNums, out double nums))
             {
-                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - lastNums.Length, lastNums.Length);
+                lblOutput.Content = lblOutput.Content.ToString().Remove((lblOutput.Content.ToString().Length) - LastNums.Length, LastNums.Length);
                 lblOutput.Content += $"{nums / 100}";
-                lastNums = $"{nums / 100}";
+                LastNums = $"{nums / 100}";
                 Logging.logger.Information("Prozentwert wurde berechnet:", nums);
             }
         }
 
         public void AddString(string entry, Label lblOutput)
         {
-            if (entry == ".")
+            Logging.logger.Information("Eintrag wird hinzugefügt; Normaler Taschenrechner");
+            if (entry == ",")
             {
                 if (dot == false)
                 {
+                    LastNums += entry;
                     dot = true;
-                    lblOutput.Content += ".";
+                    lblOutput.Content += entry;
+                    LastEntry = entry;
                 }
             }
             else if (entry == "(" || entry == ")")
             {
+                LastEntry = entry;
                 if (lblOutput.Content.ToString() == "0")
                 {
                     lblOutput.Content = entry;
@@ -101,37 +106,39 @@ namespace Multitaschenrechner
                     lblOutput.Content += ")";
                 }
             }
-            else if (lastEntry != "+" && lastEntry != "-" && lastEntry != "*" && lastEntry != "/")
+            else if (LastEntry != "+" && LastEntry != "-" && LastEntry != "*" && LastEntry != "÷")
             {
-                lastNums += entry;
+                LastNums += entry;
                 if (lblOutput.Content.ToString() == "0")
                 {
                     lblOutput.Content = entry;
-                    lastEntry = entry;
+                    LastEntry = entry;
+                    LastNums = entry;
                 }
                 else
                 {
                     lblOutput.Content += entry;
-                    lastEntry = entry;
+                    LastEntry = entry;
                 }
             }
             else
             {
-                lastNums = "";
+                LastNums = "";
                 dot = false;
-                lastEntry = entry;
-                if (lastEntry != "+" && lastEntry != "-" && lastEntry != "*" && lastEntry != "/")
+                LastEntry = entry;
+                if (LastEntry != "+" && LastEntry != "-" && LastEntry != "*" && LastEntry != "÷")
                 {
-                    lastNums += entry;
+                    LastNums += entry;
                     if (lblOutput.Content.ToString() == "0")
                     {
                         lblOutput.Content = entry;
-                        lastEntry = entry;
+                        LastEntry = entry;
+                        LastNums = entry;
                     }
                     else
                     {
                         lblOutput.Content += entry;
-                        lastEntry = entry;
+                        LastEntry = entry;
                     }
                 }
             }
@@ -139,44 +146,74 @@ namespace Multitaschenrechner
 
         public void RemoveString(Label lblOutput)
         {
+            Logging.logger.Information("Letzter Eintrag wird gelöscht; Normaler Taschenrechner");
             if (lblOutput.Content.ToString().Length > 0)
             {
                 lblOutput.Content = lblOutput.Content.ToString().Remove(lblOutput.Content.ToString().Length - 1);
+                if (LastNums.Length > 0)
+                {
+                    LastNums = LastNums.Remove(LastNums.Length - 1);
+                }   
                 if (lblOutput.Content.ToString() == "")
                 {
                     lblOutput.Content = "0";
                 }
                 if (lblOutput.Content.ToString() != "")
                 {
-                    lastEntry = lblOutput.Content.ToString().Last().ToString();
+                    LastEntry = lblOutput.Content.ToString().Last().ToString();
+                    int dotcount = 0;
                     if (dot == true)
                     {
                         for (int i = lblOutput.Content.ToString().Length - 1; i >= 0; i--)
                         {
-                            if ((lblOutput.Content.ToString()[i] == '+' || lblOutput.Content.ToString()[i] == '-' || lblOutput.Content.ToString()[i] == '*' || lblOutput.Content.ToString()[i] == '/') && lblOutput.Content.ToString().Last().ToString() == ".")
+                            if (lblOutput.Content.ToString()[i] == '+' || lblOutput.Content.ToString()[i] == '-' || lblOutput.Content.ToString()[i] == '*' || lblOutput.Content.ToString()[i] == '/')
                             {
-                                dot = false;
                                 break;
                             }
+                            if (lblOutput.Content.ToString()[i] == ',')
+                            {
+                                dotcount++;
+                            }
+                        }
+                        if (dotcount == 0)
+                        {
+                            dot = false;
                         }
                     }
                 }
                 else
                 {
-                    lastEntry = "+";
+                    LastEntry = "+";
                 }
             }
         }
 
+        public void UpdateVariables(string result)
+        {
+            Logging.logger.Information("Variablen werden aktualisiert; Normaler Taschenrechner");
+            LastEntry = result.Last().ToString();
+            for (int i = result.Length - 1; i >= 0; i--)
+            {
+                if (result[i] == ',')
+                {
+                    dot = true;
+                }
+            }
+            LastNums = result;
+        }
+
         public void Clear(Label lblOutput)
         {
+            Logging.logger.Information("Rechner wird zurückgesetzt; Normaler Taschenrechner");
             lblOutput.Content = "0";
-            lastEntry = "+";
+            LastEntry = "+";
             dot = false;
+            LastNums = "0";
         }
 
         public string SerializeToCsv()
         {
+            Logging.logger.Information("Zeile wird serialisiert:", $"{Rechnung};{Ergebnis}");
             return $"{Rechnung};{Ergebnis}";
         }
 
@@ -203,9 +240,10 @@ namespace Multitaschenrechner
 
         public string Berechnen(string rechnung)
         {
-            rechnung = rechnung.Replace(",", ".");
+            Logging.logger.Information("Rechnung wird berechnet:", rechnung);
             rechnung = rechnung.Replace("√", "Sqrt");
             rechnung = rechnung.Replace("÷", "/");
+            rechnung = rechnung.Replace(",", ".");
             NCalc.Expression expr = new NCalc.Expression(rechnung);
             try
             {
