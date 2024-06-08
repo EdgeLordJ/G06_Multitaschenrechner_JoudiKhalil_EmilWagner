@@ -10,6 +10,7 @@
 | 9.5  | Die Tastatur bei dem Fake Geogebra fertig gemacht mit Style                                                                   |
 | 15.5 | Der Einstellungsbutton nach unten verschoben; Das Koordinatensystem erstellt wo man rein und raus zoomen kann;                |
 | 22.5 | Man kann jetzt Graphen zeichnen und rechts max 10 Graphen eingeben (noch nicht alle eingaben behandelt)                       |
+| 29.5 | Graph kan eingegeben werden und wird dann gezeichnet (man kann noch nicht alles eingeben)                                     |
 | 4.6  | Man kann bei dem Graph hoch und Wurzel zahlen eingeben und diese werden auch gezeichnet                                       |
 | 5.6  | Man kann jetzt bei dem Graphen alles eingeben und es funktioniert soweit (noch keine Fehler prüfung), Design von dem Währungsumrechner gemacht (hauptsächlich für die comboBox) |
 | 6.6  | Menü mit Überschrieften versehen sodass alles schön für den Nutzer gegliedert ist, Design für das Diagramm fertig gemacht, Längenumrechner gemacht, Screenshot für das Diagramm gemacht|
@@ -18,4 +19,7 @@
 
 ## Probleme
 | Problem | Lösung |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Wie wandle ich einen Hochzahl string in eine Rechnung um | Ich ersetzte die Hochzahl durch Math.Pow() |
+| Wie rechne ich jetzt einen string "Math.Pow" | Geht nicht ich nehme Ncalc.Pow |
 | Wie macht man in Gimp das die Bilder nicht nur Graustufen haben oder nur die Farbe Weiß und Schwarz | Man geht im Menü auf Bild und dann Modus und dann RGB |

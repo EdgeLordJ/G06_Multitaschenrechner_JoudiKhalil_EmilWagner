@@ -24,10 +24,10 @@
 3. Geogebra Fake weiter machen. Serializierung
 4. Geogebra fertig und Währungsrechner komplett machen.
 ## Wer macht was?
-Emil: Fokus: Front End (Menüleiste) und Geogebra Fake (Back und front end)
-Joudi: Fokus: Back End (der normale Taschenrechner) und auch Front End ein bisschen
+Emil: Fokus: Front End (z.B. Menüleiste) und Geogebra Fake (Back und front end)
+Joudi: Fokus: Back End (z.B. der normale Taschenrechner) und auch Front End ein bisschen
 
-# Code Dokumentation
+
 
                                                                       |
 
