@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Multitaschenrechner.NormalCalc">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAEIAAABSAAAAABAIAAIQAAAAAAABAAIAAIGCABAAAA=</HashCode>
+      <FileName>NormalCalc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.NormalCalcList">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAgIAAAAAAAAAACAEAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>NormalCalcList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.Currency">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAIAAIQAQABAAEAAAAAAAABABAAAA=</HashCode>
+      <FileName>Currency.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.CurrenciesCollection">
+    <Position X="6.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAQAAAAAAAQAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>CurrenciesCollection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.CurrencyComparison">
+    <Position X="8" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAgAQAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>CurrencyComparison.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.TemperatureConverter">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAIAAIQAgABAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>TemperatureConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.Graph">
+    <Position X="13.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAACAAAIAAAAAAAAAAIAAAAAAAADAAEAgAAAQAA=</HashCode>
+      <FileName>Graph.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.GraphList">
+    <Position X="15.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAEAAAAAAAAAAAAAAAAIAAAEAgIAAAAI=</HashCode>
+      <FileName>GraphList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.Length">
+    <Position X="13" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAgAIAAMQAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Length.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.LengthDic">
+    <Position X="15" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LengthDic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.Logging">
+    <Position X="4.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Logging.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.CoordinateSystem">
+    <Position X="16.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAEAACAAAAAAAAAgCA=</HashCode>
+      <FileName>coordinateSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.Angle">
+    <Position X="7.75" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAgAIAAIQAABAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Angle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Multitaschenrechner.AngleConverter">
+    <Position X="9.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AngleConverter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
