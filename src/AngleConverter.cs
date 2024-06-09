@@ -14,7 +14,7 @@ namespace Multitaschenrechner
                 return value * Math.PI / 180;
             if (fromUnit == "Winkelgrad" && toUnit == "Gon")
                 return value * 10 / 9;
-            if (fromUnit == "Bogenmaß" && toUnit == "Grad")
+            if (fromUnit == "Bogenmaß" && toUnit == "Winkelgrad")
                 return value * 180 / Math.PI;
             if (fromUnit == "Bogenmaß" && toUnit == "Gon")
                 return value * 200 / Math.PI;

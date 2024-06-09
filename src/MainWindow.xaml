@@ -94,8 +94,8 @@
 
                 <RadioButton x:Name="rbtnSettings" Margin="10" Grid.Row="5" GroupName="GroupMenu" Checked="rbtnSettings_Checked">
                     <StackPanel Orientation="Horizontal" Margin="0, 0, 0, 0">
-                        <Image Source="Images/img_Einstellungen.png" Width="25" Margin="0, 0,10 , 0"></Image>
-                        <TextBlock Text="Einstellungen" VerticalAlignment="Center"/>
+                        <Image Source="Images/Help_img.png" Width="20" Margin="0 0 10 0"           />
+                        <TextBlock Text="Hilfe" VerticalAlignment="Center" />
                     </StackPanel>
                 </RadioButton>
 
