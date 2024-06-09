@@ -44,6 +44,10 @@ Die neueste Version von Visual Studio mit ".Net6.0".
 ## Funktionsblöcke bzw. Architektur
 ![Klassen Diagramme](Bilder/KlassenDiagramme1.png)
 ![Klassen Diagramme](Bilder/KlassenDiagramme2.png)
+![Klassen Diagramme](Bilder/KlassenDiagramme3.png)
+![Klassen Diagramme](Bilder/KlassenDiagramme4.png)
+![Klassen Diagramme](Bilder/KLassenDiagramme5.png)
+![Klassen Diagramme](Bilder/KlassenDiagramme6.png)
 
 ## Bedienungsanleitung
 ### Menüleiste
