@@ -94,3 +94,68 @@ Hier sehen sie unser Team und deren Kontaktdaten, die hart an diesem Projekt ges
 ## Quellen Bilder
 
 https://www.flaticon.com/de/kostenloses-icon
+
+
+# Projekttagebuch
+
+## Joudi
+
+### Dokumentation
+| Tag    | Was gemacht?                                                                                                          |
+| ------ | --------------------------------------------------------------------------------------------------------------------- |
+| 24.04. | Planung                                                                                                               |
+| 01.05. | Normaler Taschenrechner Basis Design gemacht                                                                          |
+| 08.05. | Normaler Taschenrechner hälfte fertig, Paket "ncalc" installiert; an Doku gearbeitet                                  |
+| 15.05. | Prozent, negieren, Hoch 2, Wurzel, 1 Durch x fertig; Komma fertig angepasst; Klammern Funktionalität geändert         |
+| 22.05. | Normaler Taschenrechner fertig; Logging fehlt noch                                                                    |
+| 24.05. | Logging Pakete installiert; Normaler Taschenrechner nötige Logs gemacht; offiziell fertig mit Normaler Taschenrechner |
+| 26.05. | Neues UserControl Fenster hinzugefügt für den Währungrechner bzw. Währungsrechner angefangen; Basis Design fertig     |
+| 29.05. | Währungsrechner fast fertig                                                                                           |
+| 04.06. | Währungsrechner fertiggestellt Logging fehlt                                                                          |
+| 05.06. | Währungsvergleich angefangen und 3/4 fertig richtige Balken vom Diagramm fehlen                                       |
+| 06.06. | Dezimalstelle Bug behoben bei Währungsrechner und Funktionalitäten verbessert; Währungsvergleich fertig fehlt Logging |
+| 08.06. | Logging bei Währungsrechner, Währungsvergleich, und Taschenrechner gemacht; Taschenrechner Bugs behandelt             |
+| 09.06. | Temperaturrechner fertiggestellt mit Logging                                                                          |
+
+### Probleme
+| Problem                                                                    | Lösung                                                                                                                                                                                        |
+| -------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Die Logik hinter der Einabe der einzelnen Zahlen und Zeichen               | 5h lang dran geblieben um es zu lösen.                                                                                                                                                        |
+| Problem mit dem Dezimaltrennzeichen, dass es "." ignoriert                 | Herausgefunden das es Kulturabhängig ist und man muss es mit einer Zeile Code ändern, dass "." als Dezimaltrennzeichen verwendet wird                                                         |
+| API Wahl, weil viele APIs Zahlungsbedingt sind und vielleicht betrügerisch | Herr Diem um Hilfe gebittet und dank Herr Diem eine gefunden                                                                                                                                  |
+| Beim Währungsvergleich: Die Höhe der Balken im Diagramm => waren zu klein  | Herausgefunden das man mit logarithmischem Skalieren die kleinen Werte vergrößern kann und die großen Werte komprimieren kann (Habe es in Mathe gelernt, aber ist mir recht Spät aufgefallen) |
+
+
+## Emil
+
+### Dokumentation
+| Tag  | Was gemacht?                                                                                                                  |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| 24.4 | PLanung                                                                                                                       |
+| 29.4 | Menü mit einem Tutorial angefangen                                                                                            |
+| 30.4 | Menü hat nicht geklappt wie es sollte also neu angefangen; Menü fast fertiggestellt (ohne Bilder)                             |
+| 1.5  | Menü nochmals überarbeitet und noch den Style des Menüs verschönert; Dem normalen Taschenrechner einen schönen Style verpasst |
+| 3.5  | Alle Pflichtorder erstellt und die Programme usw. verschoben; Bilder für das Menü eingefügt; Im Menü die Bilder hinzugefügt   |
+| 8.5  | Bei dem Menü noch mehr Bilder hinzugefügt                                                                                     |
+| 9.5  | Die Tastatur bei dem Fake Geogebra fertig gemacht mit Style                                                                   |
+| 15.5 | Der Einstellungsbutton nach unten verschoben; Das Koordinatensystem erstellt wo man rein und raus zoomen kann;                |
+| 22.5 | Man kann jetzt Graphen zeichnen und rechts max 10 Graphen eingeben (noch nicht alle eingaben behandelt)                       |
+| 29.5 | Graph kan eingegeben werden und wird dann gezeichnet (man kann noch nicht alles eingeben)                                     |
+| 4.6  | Man kann bei dem Graph hoch und Wurzel zahlen eingeben und diese werden auch gezeichnet                                       |
+| 5.6  | Man kann jetzt bei dem Graphen alles eingeben und es funktioniert soweit (noch keine Fehler prüfung), Design von dem Währungsumrechner gemacht (hauptsächlich für die comboBox) |
+| 6.6  | Menü mit Überschrieften versehen sodass alles schön für den Nutzer gegliedert ist, Design für das Diagramm fertig gemacht, Längenumrechner gemacht, Screenshot für das Diagramm gemacht|
+| 7.6  | Bilder in das Menü hinzugefügt und dann in Gimp so geändert das die bilder Blau anstatt Schwarz sind, Bei dem Diagramm so gestylt, dass das ausgewählte Element grün umrandet wird. |
+| 8.6  | UserControlSettings fertig gemacht und geloggt, Winkelumrechenr gemacht, Alle meine Dateien die ich bis jetzt gecodet habe geloggt|
+| 8.6 (Nacht)/9.6 | Winkelumrechner gemacht und alles dokumentiert |
+| 9.6 | Winkelumrechner geloggt und bei dem MainWindow ein ScroolViewer hinzugefügt |
+
+
+## Probleme
+| Problem | Lösung |
+| ---- | ----------------------------------------------------------------------------------------------------------------------------- |
+| Wie wandle ich einen Hochzahl string in eine Rechnung um | Ich ersetzte die Hochzahl durch Math.Pow() |
+| Wie rechne ich jetzt einen string "Math.Pow" | Geht nicht ich nehme Ncalc.Pow |
+| Wie rechne ich Wurzel aus wenn es keine Wurzel Funktion bei Ncalc gibt | Ich mache es mit der Hcohzahl, weil jede Wurzel kann man auch in eine Hochzahl umwandeln|
+| Wie mache ich ein schwarzes Logo zu einem Blauen | Ich mache in Gimp der Farbvertausch |
+| Wie macht man in Gimp das die Bilder nicht nur Graustufen haben oder nur die Farbe Weiß und Schwarz | Man geht im Menü auf Bild und dann Modus und dann RGB |
+
