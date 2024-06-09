@@ -132,7 +132,7 @@ namespace Multitaschenrechner
                             {
                                 // CultureInfo.InvariantCulture sagt dem code es soll den Punkt als Dezimaltrennzeichen verwenden vorher hat es das Punkt ignoriert
                                 lblOutputTrgt.Content = await ConvertCurrency(Baseparts[1], Trgtparts[1], Convert.ToDouble(lblOutput.Content, CultureInfo.InvariantCulture));
-                                Logging.logger.Information("Punkt wird als Dezimaltrennzeichen verwendet für die Umrechnung");
+                                Logging.logger.Information("Punkt wird als Dezimaltrennzeichen verwendet für die Umrechnung; Währungsrechner");
                                 Logging.logger.Information("Währung umgerechnet von " + Baseparts[1] + " zu " + Trgtparts[1]);
                             }
                             else
