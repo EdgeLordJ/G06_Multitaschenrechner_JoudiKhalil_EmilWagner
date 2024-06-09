@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Multitaschenrechner"
         mc:Ignorable="d"
         Title="Multitaschenrechner" Height="600" Width="1000"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Background="#272B2F">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

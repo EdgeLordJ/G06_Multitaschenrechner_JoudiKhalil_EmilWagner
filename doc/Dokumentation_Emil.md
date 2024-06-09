@@ -15,7 +15,9 @@
 | 5.6  | Man kann jetzt bei dem Graphen alles eingeben und es funktioniert soweit (noch keine Fehler prüfung), Design von dem Währungsumrechner gemacht (hauptsächlich für die comboBox) |
 | 6.6  | Menü mit Überschrieften versehen sodass alles schön für den Nutzer gegliedert ist, Design für das Diagramm fertig gemacht, Längenumrechner gemacht, Screenshot für das Diagramm gemacht|
 | 7.6  | Bilder in das Menü hinzugefügt und dann in Gimp so geändert das die bilder Blau anstatt Schwarz sind, Bei dem Diagramm so gestylt, dass das ausgewählte Element grün umrandet wird. |
-| 8.6  | UserControlSettings fertig gemacht und geloggt|
+| 8.6  | UserControlSettings fertig gemacht und geloggt, Winkelumrechenr gemacht, Alle meine Dateien die ich bis jetzt gecodet habe geloggt|
+| 8.6 (Nacht)/9.6 | Winkelumrechner gemacht und alles dokumentiert |
+| 9.6 | Winkelumrechner geloggt und bei dem MainWindow ein ScroolViewer hinzugefügt |
 
 
 ## Probleme
