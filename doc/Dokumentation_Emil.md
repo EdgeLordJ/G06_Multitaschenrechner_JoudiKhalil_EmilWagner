@@ -21,7 +21,7 @@
 
 
 ## Probleme
-| Problem | Lösung |
+| Proble | Lösung |
 | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
 | Wie wandle ich einen Hochzahl string in eine Rechnung um | Ich ersetzte die Hochzahl durch Math.Pow() |
 | Wie rechne ich jetzt einen string "Math.Pow" | Geht nicht ich nehme Ncalc.Pow |
