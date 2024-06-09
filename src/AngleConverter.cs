@@ -22,6 +22,8 @@ namespace Multitaschenrechner
                 return value * 9 / 10;
             if (fromUnit == "Gon" && toUnit == "Bogenmaß")
                 return value * Math.PI / 200;
+
+            Logging.logger.Error("Nicht vorhandenes Winkelmaß");
             return value; 
         }
      }
