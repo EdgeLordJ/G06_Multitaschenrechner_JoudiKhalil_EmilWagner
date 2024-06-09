@@ -81,3 +81,11 @@ Hier handelt es sich um eine Statistik, die grafisch angibt wie sehr sich die an
 
 Hier sehen sie unser Team und deren Kontaktdaten, die hart an diesem Projekt geschuftet haben.
 
+
+
+## Quellen Bilder
+
+https://www.flaticon.com/de/kostenloses-icon
+
+
+
