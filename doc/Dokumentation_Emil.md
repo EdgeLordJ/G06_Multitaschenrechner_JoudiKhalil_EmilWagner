@@ -25,4 +25,7 @@
 | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
 | Wie wandle ich einen Hochzahl string in eine Rechnung um | Ich ersetzte die Hochzahl durch Math.Pow() |
 | Wie rechne ich jetzt einen string "Math.Pow" | Geht nicht ich nehme Ncalc.Pow |
+| Wie rechne ich Wurzel aus wenn es keine Wurzel Funktion bei Ncalc gibt | Ich mache es mit der Hcohzahl, weil jede Wurzel kann man auch in eine Hochzahl umwandeln|
+| Wie mache ich ein schwarzes Logo zu einem Blauen | Ich mache in Gimp der Farbvertausch |
 | Wie macht man in Gimp das die Bilder nicht nur Graustufen haben oder nur die Farbe Weiß und Schwarz | Man geht im Menü auf Bild und dann Modus und dann RGB |
+
