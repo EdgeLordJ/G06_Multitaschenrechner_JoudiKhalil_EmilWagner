@@ -9,7 +9,7 @@ namespace Multitaschenrechner
 {
     public class Graph
     {
-        private int _scale;
+        
         private Func<double, double> _function;
         private Brush _color = new SolidColorBrush(Colors.White);
 
@@ -41,7 +41,7 @@ namespace Multitaschenrechner
                 Func<double, double> function = x =>
                 {
                     var expression = new NCalc.Expression(functionExpression);
-                    expression.Parameters["x"] = x; // Definieren der Variablen x
+                    expression.Parameters["x"] = x; 
                     expression.Parameters["e"] = Math.E;
                     var result = expression.Evaluate();
                     return Convert.ToDouble(result);
@@ -50,7 +50,7 @@ namespace Multitaschenrechner
                 Logging.logger.Information("Funktion wurde erfolgreich berechnet/umgewandelt");
                 return function;
             }
-            catch (Exception ex)
+            catch
             {
                 Logging.logger.Error("Eine Funktion konnte nicht umgewandelt werden.");
                 throw new InvalidOperationException("Funktion konnte nicht umgewandelt werden" );
@@ -72,7 +72,7 @@ namespace Multitaschenrechner
 
                     if (string.IsNullOrEmpty(baseNumber))
                     {
-                        baseNumber = "2"; // Default to square root if no base is provided
+                        baseNumber = "2"; 
                     }
 
                     return $"Pow({radicand}, 1.0/{baseNumber})";
@@ -89,7 +89,7 @@ namespace Multitaschenrechner
         {
             try
             {
-                string pattern = @"(\b\w+|\([^\)]+\)|e)\^(\(.+?\)|\b\w+|\d+(\.\d+)?|e)"; //angepasster Regex
+                string pattern = @"(\b\w+|\([^\)]+\)|e)\^(\(.+?\)|\b\w+|\d+(\.\d+)?|e)"; 
                 Regex regex = new Regex(pattern);
 
                 return regex.Replace(functionExpression, match =>
@@ -97,7 +97,7 @@ namespace Multitaschenrechner
                     string baseExpression = match.Groups[1].Value;
                     string exponentExpression = match.Groups[2].Value;
 
-                    // Handle complex expressions by preserving parentheses if necessary
+                    
                     return $"Pow({baseExpression}, {exponentExpression})";
                 });
             }
@@ -127,7 +127,7 @@ namespace Multitaschenrechner
                     StrokeThickness = 2
                 };
 
-                for (double x = -centerX; x <= centerX; x += 0.1) // Adjust the step for smoother graph
+                for (double x = -centerX; x <= centerX; x += 0.2)
                 {
                     double y;
                     try

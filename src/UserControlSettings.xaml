@@ -20,7 +20,7 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
             <Label Content="Emil Wagner aka EdgeLordE" Foreground="White"/>
             <Label Content="E-mail:       emil.wagner@student.htl-rankweil.at" Foreground="White"/>
-            <Label Content="Snapchat:  emil_wagner19" Foreground="White"/>
+            <Label Content="Snapchat:  emil__wagner19" Foreground="White"/>
         </StackPanel>
 
         <Label Grid.Row="1" Content="@Powered by ChatGPT" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="8"/>
@@ -31,7 +31,7 @@
         <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 20 0 0">
             <Label Content="Joudi Khalil aka Gaul" Foreground="White"/>
             <Label Content="E-mail:       joudi.khalil@student.htl-rankweil.at" Foreground="White"/>
-            <Label Content="Snapchat:  joudi_khali9410" Foreground="White"/>
+            <Label Content="Snapchat:  joudi__khali9410" Foreground="White"/>
         </StackPanel>
 
         <Label Grid.Row="1" Grid.Column="1" Content="@Powered by Copilot" Foreground="White" VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="8"/>
