@@ -41,6 +41,8 @@ Sie wurde durch Visual Studio von Microsoft getestet.
 ## Welche Softwarevoraussetzungen werden benötigt.
 Die neueste Version von Visual Studio mit ".Net6.0".
 
+## Funktionsblöcke bzw.Architektur
+
 ## Bedienungsanleitung
 ### Menüleiste
 ![Menüleiste](Bilder/Menueleiste.png)
@@ -86,6 +88,9 @@ Hier sehen sie unser Team und deren Kontaktdaten, die hart an diesem Projekt ges
 ## Quellen Bilder
 
 https://www.flaticon.com/de/kostenloses-icon
+
+
+
 
 
 
