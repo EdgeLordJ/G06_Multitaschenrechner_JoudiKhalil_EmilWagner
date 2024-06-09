@@ -15,7 +15,9 @@
 | 5.6  | Man kann jetzt bei dem Graphen alles eingeben und es funktioniert soweit (noch keine Fehler prüfung), Design von dem Währungsumrechner gemacht (hauptsächlich für die comboBox) |
 | 6.6  | Menü mit Überschrieften versehen sodass alles schön für den Nutzer gegliedert ist, Design für das Diagramm fertig gemacht, Längenumrechner gemacht, Screenshot für das Diagramm gemacht|
 | 7.6  | Bilder in das Menü hinzugefügt und dann in Gimp so geändert das die bilder Blau anstatt Schwarz sind, Bei dem Diagramm so gestylt, dass das ausgewählte Element grün umrandet wird. |
-| 8.6  | UserControlSettings fertig gemacht und geloggt|
+| 8.6  | UserControlSettings fertig gemacht und geloggt, Winkelumrechenr gemacht, Alle meine Dateien die ich bis jetzt gecodet habe geloggt|
+| 8.6 (Nacht)/9.6 | Winkelumrechner gemacht und alles dokumentiert |
+| 9.6 | Winkelumrechner geloggt und bei dem MainWindow ein ScroolViewer hinzugefügt |
 
 
 ## Probleme
@@ -23,4 +25,7 @@
 | ---- | ----------------------------------------------------------------------------------------------------------------------------- |
 | Wie wandle ich einen Hochzahl string in eine Rechnung um | Ich ersetzte die Hochzahl durch Math.Pow() |
 | Wie rechne ich jetzt einen string "Math.Pow" | Geht nicht ich nehme Ncalc.Pow |
+| Wie rechne ich Wurzel aus wenn es keine Wurzel Funktion bei Ncalc gibt | Ich mache es mit der Hcohzahl, weil jede Wurzel kann man auch in eine Hochzahl umwandeln|
+| Wie mache ich ein schwarzes Logo zu einem Blauen | Ich mache in Gimp der Farbvertausch |
 | Wie macht man in Gimp das die Bilder nicht nur Graustufen haben oder nur die Farbe Weiß und Schwarz | Man geht im Menü auf Bild und dann Modus und dann RGB |
+
