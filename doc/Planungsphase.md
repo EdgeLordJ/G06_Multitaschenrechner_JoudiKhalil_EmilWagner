@@ -51,7 +51,7 @@ Die neueste Version von Visual Studio mit ".Net6.0".
 
 ## Bedienungsanleitung
 ### Menüleiste
-![Menüleiste](Bilder/Menueleiste.png)
+![Menueleiste](Bilder/Menueleiste.png)
 
 Hier können Sie zwischen den anderen Modi immer wechseln. In den Einstellungen sehen Sie noch ein paar Informationen über die Ersteller des Programms.
 
